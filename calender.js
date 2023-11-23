@@ -53,3 +53,30 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
         renderCalendar(); // calling renderCalendar function
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Get all the li elements inside the days ul
+    var days = document.querySelectorAll('.days li');
+
+    // Add click event listener to each day
+    days.forEach(function (day) {
+        day.addEventListener('click', function () {
+            // Remove 'active' class from all days
+            days.forEach(function (day) {
+                day.classList.remove('active');
+            });
+
+            // Add 'active' class to the clicked day
+            day.classList.add('active');
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function (){
+    const chooseDate = document.querySelector('#choose-date');
+
+    chooseDate.addEventListener('click', function ()
+    {
+        window.location.href = '/Index.html';
+    })
+})
