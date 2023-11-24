@@ -55,20 +55,23 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Get all the li elements inside the days ul
-    var days = document.querySelectorAll('.days li');
+    // Get the parent container
+    var daysContainer = document.querySelector('.days');
 
-    // Add click event listener to each day
-    days.forEach(function (day) {
-        day.addEventListener('click', function () {
+    // Add click event listener to the parent container
+    daysContainer.addEventListener('click', function (event) {
+        // Check if the clicked element is an 'li' element
+        if (event.target.tagName === 'LI') {
+            var clickedDay = event.target;
+
             // Remove 'active' class from all days
-            days.forEach(function (day) {
+            daysContainer.querySelectorAll('li').forEach(function (day) {
                 day.classList.remove('active');
             });
 
             // Add 'active' class to the clicked day
-            day.classList.add('active');
-        });
+            clickedDay.classList.add('active');
+        }
     });
 });
 
