@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drone Zone Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    #mapContainer {
+      position: relative;
+    }
+
+    #droneMap {
+      width: 100%;
+    }
+
+    #result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<h1>Drone Zone Checker</h1>
+
+<div id="mapContainer">
+  <svg id="droneMap" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+    <!-- Your map elements go here -->
+  </svg>
+</div>
+
+<label for="addressInput">Indtast din adresse:</label>
+<input type="text" id="addressInput" placeholder="Indtast din adresse" oninput="getAddressSuggestions()">
+
+<div id="suggestions"></div>
+
+<button onclick="checkDroneZone()">Tjek dronezone</button>
+
+<div id="result"></div>
+
+<script src="booking.js"></script>
+</body>
+</html>
