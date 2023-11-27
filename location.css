@@ -1,0 +1,28 @@
+#map {
+    height: 400px;
+}
+
+#location {
+    margin-top: 600px;
+    margin-right: 800px;
+}
+
+#suggestionsContainer {
+    position: absolute;
+    background-color: white;
+    z-index: 999;
+    margin-top: 710px;
+    margin-right: 70px;
+
+}
+
+#suggestionList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#suggestionList li {
+    padding: 5px;
+    cursor: pointer;
+}

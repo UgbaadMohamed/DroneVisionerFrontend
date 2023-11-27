@@ -103,7 +103,7 @@ header .current-date{
     background: #f2f2f2;
 }
 
-#choose-date {
+#date {
     background-color: #a2a2a2; /* Green background color */
     color: white; /* White text color */
     padding: 5px 8px; /* Padding to give some space around the text */
@@ -113,6 +113,6 @@ header .current-date{
     cursor: pointer; /* Change cursor on hover to indicate it's clickable */
 }
 
-#choose-date:hover {
+#date:hover {
     background-color: #829d65; /* Darker green color on hover */
 }

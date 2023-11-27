@@ -1,3 +1,5 @@
+var clickedDay;
+
 const daysTag = document.querySelector(".days"),
     currentDate = document.querySelector(".current-date"),
     prevNextIcon = document.querySelectorAll(".icons span");
@@ -62,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
     daysContainer.addEventListener('click', function (event) {
         // Check if the clicked element is an 'li' element
         if (event.target.tagName === 'LI') {
-            var clickedDay = event.target;
+            clickedDay = event.target;
 
             // Remove 'active' class from all days
             daysContainer.querySelectorAll('li').forEach(function (day) {
@@ -75,11 +77,49 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function (){
-    const chooseDate = document.querySelector('#choose-date');
+/*document.addEventListener('DOMContentLoaded', function (){
+    const chooseDate = document.querySelector('#date');
 
     chooseDate.addEventListener('click', function ()
     {
         window.location.href = '/Index.html';
     })
-})
+})*/
+
+
+
+
+
+
+
+
+
+
+document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+    const date = clickedDay ? clickedDay.textContent : '';
+
+    const formData = {
+        location: document.getElementById("location").value,
+        description: document.getElementById("description").value,
+        date: date,
+        time: document.getElementById("time").value,
+    };
+
+
+    fetch('http://localhost:8085/appointment', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+
+            console.log('Success:', data);
+
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+});
