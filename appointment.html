@@ -6,6 +6,7 @@
   <title>Dynamic Calendar JavaScript | CodingNepal</title>
   <link rel="stylesheet" href="calender.css">
   <link rel="stylesheet" href="../location.css">
+  <link rel="stylesheet" href="time.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Google Font Link for Icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
@@ -60,19 +61,68 @@
 
   <input type="hidden" id="selectedDate" name="selectedDate">
 
+  <input type="hidden" id="selectedTime" name="selectedTime">
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Vælg start tid</button>
+    <div id="timeDropdown" class="dropdown-content">
+      <a>10:00</a>
+      <a>10:30</a>
+      <a>11:00</a>
+      <a>11:30</a>
+      <a>12:00</a>
+      <a>12:30</a>
+      <a>13:00</a>
+      <a>13:30</a>
+      <a>14:00</a>
+      <a>14:30</a>
+      <a>15:00</a>
+      <a>15:30</a>
+      <a>16:00</a>
+      <a>16:30</a>
+      <a>17:00</a>
+      <a>17:30</a>
+      <a>18:00</a>
+      <a>18:30</a>
+      <a>19:00</a>
+      <a>19:30</a>
+      <a>20:00</a>
+      <a>20:30</a>
+      <a>21:00</a>
+    </div>
+  </div>
+
   <button type="submit">Send</button>
 
 </form>
 
 
+
 <script>
+
+
   // Use fetch to get the header content and insert it into the placeholder
   fetch('header.html')
           .then(response => response.text())
           .then(html => document.getElementById('header-placeholder').innerHTML = html);
 
 
+  function myFunction() {
+    document.getElementById("timeDropdown").classList.toggle("show");
+  }
 
+  // Close the dropdown menu if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
 
 </script>
 <script>
@@ -154,15 +204,29 @@
     });
   });
 
+  //TODO:TIME!!!!!!!!!!!!!!
 
-  /*document.addEventListener('DOMContentLoaded', function (){
-      const chooseDate = document.querySelector('#date');
+  document.addEventListener('DOMContentLoaded', function () {
+    const timeDropdown = document.getElementById('timeDropdown');
 
-      chooseDate.addEventListener('click', function ()
-      {
-          window.location.href = '/Index.html';
-      })
-  })*/
+    if (timeDropdown) {
+      const timeEntries = timeDropdown.getElementsByTagName('a');
+
+      // Add click event listener to each time entry
+      Array.from(timeEntries).forEach(function (entry) {
+        entry.addEventListener('click', function () {
+          // Store the clicked time value for later use
+          const selectedTime = entry.textContent;
+          console.log('Clicked Time Entry:', selectedTime);
+
+          // You can use the selectedTime value as needed, e.g., store it in a variable or send it to the server.
+          document.getElementById('selectedTime').value = selectedTime
+          document.getElementById("timeDropdown").classList.remove("show");
+        });
+      });
+    }
+  });
+
 
   document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('appointmentForm');
@@ -171,12 +235,11 @@
       form.onsubmit = async function (event) {
         event.preventDefault(); // Prevent default form submission
 
-
         const formData = {
           location: document.getElementById("location").value,
           description: document.getElementById("description").value,
           date: document.getElementById("selectedDate").value, //date
-          //time: document.getElementById("time").value,
+          time: document.getElementById("selectedTime").value,
         };
 
         console.log("Form Data:", formData);
