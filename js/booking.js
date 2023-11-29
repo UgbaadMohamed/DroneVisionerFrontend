@@ -11,7 +11,6 @@ function checkDroneZone() {
         return;
     }
 
-    // Erstat 'YOUR_API_KEY' med din faktiske API-nøgle
     const apiKey = 'YOUR_API_KEY';
     const addressApiUrl = `https://dawa.aws.dk/adresser/autocomplete?q=${encodeURIComponent(address)}&api-key=${apiKey}`;
 
