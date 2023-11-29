@@ -1,3 +1,7 @@
+
+
+// Use fetch to get the header content and insert it into the placeholder
+
 async function submitForm() {
     const brand = document.getElementById('brand').value;
     const version = document.getElementById('version').value;
