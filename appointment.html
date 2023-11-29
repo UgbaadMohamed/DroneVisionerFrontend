@@ -19,10 +19,10 @@
 
 <div id="header-placeholder"></div>
 
-<form id="appointmentForm" method="post">
+<form id="appointmentForm" method="POST">
 <div class="wrapper">
 
-
+  <label type="hidden" for="selectedDate">Dato</label>
   <header>
     <p class="current-date"></p>
 
@@ -43,10 +43,12 @@
       <li>Søn</li>
     </ul>
 
-
     <ul class="days"></ul>
+<br>
+    <button>Vælg dato</button>
+    <!--<p style="color: #005a00; font-style: italic; font-size: medium;">* Den grønne dato, er den valgte dato *</p> !-->
 
-<button>Vælg dato</button>
+
 
   </div>
 
@@ -93,10 +95,9 @@
 
   <button type="submit">Send</button>
 
+  <input type="hidden" name="_autoresponse" value="Du har nu foretaget en booking, og vi vender tilbage. Tak for at bruge vores service.">
+
 </form>
-
-
-
 <script>
 
 

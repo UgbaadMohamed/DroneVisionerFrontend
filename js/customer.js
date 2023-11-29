@@ -1,8 +1,8 @@
 
 document.getElementById('bookingForm').addEventListener('submit', function(event) {
 
-    var currentDate = new Date();
-    var formattedDate = currentDate.toISOString().split('T')[0];
+   // var currentDate = new Date();
+  //  var formattedDate = currentDate.toISOString().split('T')[0];
     document.getElementById('registration_date').value = formattedDate;
 
     const formData = {
