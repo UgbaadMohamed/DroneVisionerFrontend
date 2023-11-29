@@ -27,9 +27,9 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 //CALENDER --------------------------------------------------------------------------------------------
-function calender() {
-    var clickedDay;
+var clickedDay;
 
+function calender() {
     const daysTag = document.querySelector(".days"),
         currentDate = document.querySelector(".current-date"),
         prevNextIcon = document.querySelectorAll(".icons span");
