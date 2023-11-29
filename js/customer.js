@@ -96,6 +96,10 @@ document.getElementById('bookingForm').addEventListener('submit', function(event
 
     return age;
 }
+fetch('header.html')
+    .then(response => response.text())
+    .then(html => document.getElementById('header-placeholder').innerHTML = html);
+
 
 
 
