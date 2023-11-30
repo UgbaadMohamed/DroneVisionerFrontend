@@ -20,12 +20,13 @@
 </head>
 <body>
 
-<div id="header-placeholder"></div>
+<!--div id="header-placeholder"></div-->
 
 <form id="appointmentForm" method="POST">
+  <label >Vælg dato: </label>
 <div class="wrapper">
 
-  <label type="hidden" for="selectedDate">Dato</label>
+  <label type="hidden" for="selectedDate"></label>
   <header>
     <p class="current-date"></p>
 
@@ -47,54 +48,41 @@
     </ul>
 
     <ul class="days"></ul>
-<br>
     <button>Vælg dato</button>
     <!--<p style="color: #005a00; font-style: italic; font-size: medium;">* Den grønne dato, er den valgte dato *</p> !-->
 
-
-
   </div>
+
 
 </div>
 
+
   <div id="map"></div>
+
+
+
+  <input type="hidden" id="selectedDate" name="selectedDate">
+  <input type="hidden" id="selectedTime" name="selectedTime">
+
+  <label >Vælg tidspunkt: </label>
+<br>
+
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Vælg start tid</button>
+    <div id="timeDropdown" class="dropdown-content"></div>
+  </div>
+
+<br>
+  <br>
+  <label>Indtast adresse: </label>
+
   <input type="text" id="location" placeholder="Indtast adresse" oninput="suggestAddress()">
   <div id="suggestionsContainer"></div>
 
-  <label for="description">Begivenhedsdetaljer (max 500 tegn)</label>
-  <textarea name="description" id="description" placeholder="Skriv en kort beskrivelse..." maxlength="500" required></textarea>
-
-  <input type="hidden" id="selectedDate" name="selectedDate">
-
-  <input type="hidden" id="selectedTime" name="selectedTime">
-  <div class="dropdown">
-    <button onclick="myFunction()" class="dropbtn">Vælg start tid</button>
-    <div id="timeDropdown" class="dropdown-content">
-      <a>10:00</a>
-      <a>10:30</a>
-      <a>11:00</a>
-      <a>11:30</a>
-      <a>12:00</a>
-      <a>12:30</a>
-      <a>13:00</a>
-      <a>13:30</a>
-      <a>14:00</a>
-      <a>14:30</a>
-      <a>15:00</a>
-      <a>15:30</a>
-      <a>16:00</a>
-      <a>16:30</a>
-      <a>17:00</a>
-      <a>17:30</a>
-      <a>18:00</a>
-      <a>18:30</a>
-      <a>19:00</a>
-      <a>19:30</a>
-      <a>20:00</a>
-      <a>20:30</a>
-      <a>21:00</a>
-    </div>
-  </div>
+  <label for="description">Begivenhedsdetaljer: </label>
+  <br>
+  <textarea name="description" id="description" placeholder="Skriv en kort beskrivelse (max 500 tegn)" maxlength="500"
+            required></textarea>
 
   <button type="submit">Send</button>
 
@@ -102,15 +90,17 @@
 
 </form>
 
+</body>
+
 <script>
 
   // Use fetch to get the header content and insert it into the placeholder
-  fetch('header.html')
+  fetch('/templates/header.html')
           .then(response => response.text())
           .then(html => document.getElementById('header-placeholder').innerHTML = html);
 
 </script>
 
-</body>
+
 </html>
 

@@ -15,7 +15,8 @@ body{
     background: #829d65;
 }
 .wrapper{
-    width: 450px;
+    width: 350px;
+    margin-right: 1000px;
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.12);
@@ -52,18 +53,20 @@ header .current-date{
     font-weight: 500;
 }
 .calendar{
-    padding: 20px;
+    padding: 10px;
 }
 .calendar ul{
     display: flex;
     flex-wrap: wrap;
     list-style: none;
     text-align: center;
+    margin-bottom: 0; /* Add this line to remove margin bottom */
 }
 .calendar .days{
     margin-bottom: 20px;
 }
 .calendar li{
+    font-size: 1rem; /* Adjust the font size as needed */
     color: #333;
     width: calc(100% / 7);
     font-size: 1.07rem;
