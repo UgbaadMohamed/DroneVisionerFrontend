@@ -3,41 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visual Media Type - photo</title>
+    <title>Photo</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../navBar.css">
+    <link rel="stylesheet" href="../main.css">
+
 </head>
 <body>
+<div style="margin-bottom: 3rem" id="index-placeholder"></div>
 
-<div class="container mt-5">
-    <h1>Visual Media Type - photo</h1>
+    <div class="scroll-container">
 
-    <div class="mb-3">
-        <label for="visualMediaType" class="form-label">Capture Device Model:</label>
-        <input type="text" id="visualMediaType" name="visualMediaType" value="photo" class="form-control" readonly>
+
+    <h1 style="color: #829d65" >Photo</h1>
+        <p>Se mit arbejde!</p>
+
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <br>
+            <br>
+            <img src="https://inhisimagephotography.com/wp-content/uploads/2023/07/dawayne-mcIntosh-family-0007-NR-retouched-portfolio-800px.jpg"
+                 class="img-fluid" alt="Photo 1">
+            <br>
+            <br>
+            <br>
+
+            <img src="../photos/DJI_0836.JPG" height="3024" width="4032"
+                 class="img-fluid" alt="Photo 1.5">
+            <br>
+            <br>
+            <br>
+            <img src="../photos/DJI_0836.JPG" height="3024" width="4032"
+                 class="img-fluid" alt="Photo 1.5">
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <img src="https://kellymcphail.com/wp-content/uploads/2021/03/KMCPHAIL192-scaled.jpg" class="img-fluid" alt="Photo 2">
+            <br>
+            <br>
+            <br>
+                <div class="box">
+                    <br>
+                    <p>Tag dine visuelle oplevelser til nye højder med vores avancerede drone - <span id="brandInfo">DJI</span> <span id="versionInfo">Mini 3 Pro</span>. Lad mig fange øjeblikke fra unikke vinkler og skabe visuelt indhold, der skiller sig ud. Udforsk verden gennem objektivet af en passioneret fotograf og oplev dine øjeblikke på en helt ny måde.</p>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="visualMediaType" class="form-label">Type af visuelt medie:</label>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" id="visualMediaType" name="visualMediaType" value="Photo" class="form-control" readonly>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="brand" class="form-label">Mærke på optageenhed:</label>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" id="brand" name="brand" value="Canon" class="form-control" readonly>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="version" class="form-label">Version:</label>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" id="version" name="version" value="EOS 5D Mark IV" class="form-control" readonly>
+                        </div>
+                    </div>
+
+                    <!-- Book Now Button -->
+                    <button type="button" class="btn btn-custom btn-lg" onclick="submitForm()">Book Nu</button>
+                </div>
+
+        </div>
+
+     <div class="col-md-4 mb-3">
+            <br>
+            <br>
+
+         <img src="https://images.squarespace-cdn.com/content/v1/52eeeae9e4b04af4cf9542bb/1683912390820-MNL6EJHLJ76938Q4HQ64/intown-atlanta-grant-park-buckhead-brookhaven-family-stone-mountain-outdoor-spring-indian-family-photoshoot_2071.jpg?format=2500w"
+                 class="img-fluid" alt="Photo 3">
+            <br>
+            <br>
+            <br>
+            <br>
+
+
+         <img src="../photos/DJI_0847.JPG" height="3024" width="4032"
+                 class="img-fluid" alt="Photo 3.5">
+
+         <br>
+         <br>
+         <br>
+         <img src="../photos/DJI_0836.JPG" height="3024" width="4032"
+              class="img-fluid" alt="Photo 1.5">
+     </div>
+ </div>
+
+
+<div class="row">
+    <div class="col-md-4 mb-3">
+        <img src="../photos/DJI_0775.JPG"  height="3024" width="4032"
+             class="img-fluid" alt="Photo 4">
     </div>
 
-    <div class="mb-3">
-        <label for="brand" class="form-label">Capture Device Brand:</label>
-        <input type="text" id="brand" name="brand" value="Canon" class="form-control" readonly>
+    <div class="col-md-4 mb-3">
+        <img src="../photos/DJI_0783.JPG" height="3024" width="4032"
+             class="img-fluid" alt="Photo 5">
     </div>
 
-    <div class="mb-3">
-        <label for="version" class="form-label">Capture Device Model:</label>
-        <input type="text" id="version" name="version" value="EOS 5D Mark IV" class="form-control" readonly>
-    </div>
-
-    <div>
-        <button type="button" class="btn btn-primary" onclick="submitForm()">Book</button>
+    <div class="col-md-4 mb-3">
+        <img src="../photos/DJI_0793.JPG" height="3024" width="4032"
+             class="img-fluid" alt="Photo 6">
     </div>
 </div>
 
-<!-- Bootstrap JS and Popper.js -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-e0Dz6Ffh8IqJxljAVNSCAIXYOWg3lOd7DFIvo3ouRJk4A2r4JY1i7K76IGbQPOGq" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="correct-integrity-value" crossorigin="anonymous"></script>
+
+    <div class="bg-1">
+        <div class="container">
+            <h3 class="text-center">Contact</h3>
+            <p class="text-center"><em>Glæder os til at høre fra dig!</em></p>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Spørgesmål? Skriv til os.</p>
+                    <p><span class="glyphicon glyphicon-map-marker"></span>Køge, DK</p>
+                    <p><span class="glyphicon glyphicon-phone"></span>Phone: +57564732</p>
+                    <p><span class="glyphicon glyphicon-envelope"></span>Email: Nihat-D@mail.com</p>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <input class="form-control" id="name" name="name" placeholder="Navn" type="text" required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                        </div>
+                    </div>
+                    <textarea class="form-control" id="comments" name="comments" placeholder="Kommentar" rows="5"></textarea>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <button class="btn pull-right" type="submit">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-e0Dz6Ffh8IqJxljAVNSCAIXYOWg3lOd7DFIvo3ouRJk4A2r4JY1i7K76IGbQPOGq"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="correct-integrity-value" crossorigin="anonymous"></script>
+
+<script>
+    fetch('index.html')
+        .then(response => response.text())
+        .then(html => document.getElementById('index-placeholder').innerHTML = html);
+</script>
 
 <script src="capturedevice.js"></script>
 </body>
+
 </html>
-
-
