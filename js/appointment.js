@@ -1,4 +1,5 @@
 //TIME DROPDOWN --------------------------------------------------------------------------------------------
+
 function myFunction() {
     document.getElementById("timeDropdown").classList.toggle("show");
 }
@@ -27,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 //CALENDER --------------------------------------------------------------------------------------------
+
 var clickedDay;
 
 function calender() {
@@ -111,6 +113,7 @@ function handleClickDay() {
 
 //TODO:TIME!!!!!!!!!!!!!! //kalde dom content en gang og så kalde de forskelle funktioner
 //WHEN TIMESTAMP CLICKED--------------------------------------------------------------------------------------------
+
 function handleClickTime() {
         const timeDropdown = document.getElementById('timeDropdown');
 
@@ -133,6 +136,7 @@ function handleClickTime() {
     }
 
 //POST APPOINTMENT TO DATABASE-----------------------------------------------------------------------------------------
+
 function postAppointmentToDatabase() {
         const form = document.getElementById('appointmentForm');
 
