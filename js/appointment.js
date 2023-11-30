@@ -1,3 +1,30 @@
+function generateTimeOptions() {
+    var startTime = 10; // Starting hour
+    var endTime = 21;   // Ending hour
+    var timeOptions = [];
+
+    for (var hour = startTime; hour <= endTime; hour++) {
+        // Add options with 30-minute intervals
+        timeOptions.push(hour + ":00");
+        timeOptions.push(hour + ":30");
+    }
+
+    return timeOptions;
+}
+
+//
+function populateDropdown() {
+    var timeOptions = generateTimeOptions();
+
+    var dropdown = document.getElementById("timeDropdown");
+
+    timeOptions.forEach(function (time) {
+        var option = document.createElement("a");
+        option.textContent = time;
+        dropdown.appendChild(option);
+    });
+}
+
 //TIME DROPDOWN --------------------------------------------------------------------------------------------
 
 function myFunction() {
@@ -24,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
     calender();
     handleClickDay();
     handleClickTime();
+    populateDropdown();
     postAppointmentToDatabase();
 })
 
@@ -170,7 +198,7 @@ function postAppointmentToDatabase() {
                     console.log('Success:', data);
 
                     // Uncomment the line below if you want to redirect after successful submission
-                    // window.location.href = "/Index.html";
+                    // window.location.href = "/header.html";
                 } catch (error) {
                     console.error('Error:', error);
                 }
