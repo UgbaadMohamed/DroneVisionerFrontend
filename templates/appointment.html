@@ -16,7 +16,6 @@
   <script src="/js/appointment.js"></script>
   <script src="/js/location.js"></script>
 
-
 </head>
 <body>
 
@@ -53,13 +52,9 @@
 
   </div>
 
-
 </div>
 
-
   <div id="map"></div>
-
-
 
   <input type="hidden" id="selectedDate" name="selectedDate">
   <input type="hidden" id="selectedTime" name="selectedTime">
@@ -91,16 +86,6 @@
 </form>
 
 </body>
-
-<script>
-
-  // Use fetch to get the header content and insert it into the placeholder
-  fetch('/templates/header.html')
-          .then(response => response.text())
-          .then(html => document.getElementById('header-placeholder').innerHTML = html);
-
-</script>
-
 
 </html>
 
