@@ -203,3 +203,9 @@ function postAppointmentToDatabase() {
         }
     }
 
+    //--------------
+    function submitForm() {
+    window.location.href = '/templates/customer.html';
+    }
+
+

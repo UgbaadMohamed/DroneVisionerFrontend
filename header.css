@@ -75,7 +75,7 @@ body {
 }
 
 
-.login-button {
+.pricing-button {
     display: inline-block;
     padding: 35px 105px;
     font-size: 16px;
@@ -90,12 +90,12 @@ body {
     background-color: transparent;
 }
 
-.login-button:hover {
+.pricing-button:hover {
     background-color: rgba(17, 56, 0, 0.11);
     color: black;
 }
 
-.tilmeld-button {
+.about-us-button {
     padding: 35px 20%;
     font-size: 16px;
     font-weight: bold;
@@ -109,7 +109,7 @@ body {
     background-color: transparent;
 }
 
-.tilmeld-button:hover {
+.about-us-button:hover {
     background-color: rgba(17, 56, 0, 0.11);
     color: #000000;
 }

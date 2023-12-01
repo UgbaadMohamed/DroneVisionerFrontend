@@ -73,6 +73,8 @@ async function submitForm() {
     } else {
         console.error('Error fetching existing visual media type');
     }
+
+    window.location.href = 'appointment.html';
 }
 
 
