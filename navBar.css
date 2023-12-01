@@ -170,3 +170,116 @@ br {
 
 
 
+
+
+
+
+
+
+
+
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Header styles */
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+#droneVision {
+    width: 280px;
+    height: auto;
+    margin-top: 13px;
+    margin-left: 25px;
+}
+
+.navbar-toggler {
+    border: none;
+    outline: none;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item {
+    margin-right: 15px;
+}
+
+/* Main content styles */
+.gradient-form {
+    background-color: #ffffff;
+}
+
+.card {
+    border: none;
+    border-radius: 8px; /* Reduced border-radius */
+}
+
+.card-body {
+    padding: 0.5rem; /* Reduced padding */
+}
+
+form {
+    max-width: 60%; /* Adjusted max-width */
+    margin: 0 auto; /* Center the form */
+}
+
+label {
+    display: block;
+    margin-bottom: 6px; /* Reduced margin-bottom */
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 8px; /* Reduced padding */
+    margin-bottom: 10px; /* Reduced margin-bottom */
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Reduced border-radius */
+    box-sizing: border-box;
+}
+
+.date-dropdown select {
+    width: calc(33.33% - 5px);
+}
+
+
+/* Right side content styles */
+
+/* Responsive styles */
+@media (max-width: 991.98px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-toggler {
+        margin-right: 15px; /* Reduced margin-right */
+    }
+
+    .login-box {
+        margin-top: 10px; /* Reduced margin-top */
+        order: -1;
+    }
+}
+
+
+
