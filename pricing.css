@@ -8,18 +8,17 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column; /* Adjusted to column layout */
-    height: 100vh;
+    margin-bottom: 400px;
 }
 
 .pricing-header {
-    text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 20%;
+
 }
 
 .pricing-text {
-    max-width: 600px;
     text-align: center;
-    margin-bottom: 10px;
+    margin-top: -20%;
 }
 
 .pricing-cards {

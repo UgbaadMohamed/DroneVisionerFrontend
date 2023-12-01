@@ -1,3 +1,5 @@
+
+
 function generateTimeOptions() {
     var startTime = 10; // Starting hour
     var endTime = 21;   // Ending hour
@@ -172,6 +174,7 @@ function postAppointmentToDatabase() {
                     description: document.getElementById("description").value,
                     date: document.getElementById("selectedDate").value, //date
                     time: document.getElementById("selectedTime").value,
+
                 };
 
                 //console.log("Form Data:", formData);
@@ -203,9 +206,11 @@ function postAppointmentToDatabase() {
         }
     }
 
-    //--------------
+    /*--------------
     function submitForm() {
     window.location.href = '/templates/customer.html';
     }
 
+
+     */
 
