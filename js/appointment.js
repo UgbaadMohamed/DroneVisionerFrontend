@@ -31,7 +31,7 @@ function myFunction() {
     document.getElementById("timeDropdown").classList.toggle("show");
 }
 
-// Close the dropdown menu if the user clicks outside of it
+/* Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
     if (!event.target.matches('.dropbtn')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -43,7 +43,7 @@ window.onclick = function(event) {
             }
         }
     }
-}
+}*/
 
 //DOM CONTENT LOADED --------------------------------------------------------------------------------------------
 
@@ -59,15 +59,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 var clickedDay;
 
+// getting new date, current year and month
+let date = new Date(),
+    currYear = date.getFullYear(),
+    currMonth = date.getMonth();
+
 function calender() {
     const daysTag = document.querySelector(".days"),
         currentDate = document.querySelector(".current-date"),
         prevNextIcon = document.querySelectorAll(".icons span");
-
-// getting new date, current year and month
-    let date = new Date(),
-        currYear = date.getFullYear(),
-        currMonth = date.getMonth();
 
 // storing full name of all months in array
     const months = ["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli",
@@ -143,25 +143,20 @@ function handleClickDay() {
 //WHEN TIMESTAMP CLICKED--------------------------------------------------------------------------------------------
 
 function handleClickTime() {
-        const timeDropdown = document.getElementById('timeDropdown');
+    const timeDropdown = document.getElementById('timeDropdown');
 
-        if (timeDropdown) {
-            const timeEntries = timeDropdown.getElementsByTagName('a');
-
-            // Add click event listener to each time entry
-            Array.from(timeEntries).forEach(function (entry) {
-                entry.addEventListener('click', function () {
-                    // Store the clicked time value for later use
-                    const selectedTime = entry.textContent;
-                    console.log('Clicked Time Entry:', selectedTime);
-
-                    // Set the selected time in the hidden input field
-                    document.getElementById('selectedTime').value = selectedTime
-                    document.getElementById("timeDropdown").classList.remove("show");
-                });
-            });
-        }
+    if (timeDropdown) {
+        timeDropdown.addEventListener('click', function (event) {
+            if (event.target.tagName === 'A') {
+                const selectedTime = event.target.textContent.trim();
+                //console.log('Clicked Time Entry:', selectedTime);
+                document.getElementById('selectedTime').value = selectedTime;
+                document.getElementById("timeDropdown").classList.remove("show");
+            }
+        });
     }
+}
+
 
 //POST APPOINTMENT TO DATABASE-----------------------------------------------------------------------------------------
 
@@ -179,7 +174,7 @@ function postAppointmentToDatabase() {
                     time: document.getElementById("selectedTime").value,
                 };
 
-                console.log("Form Data:", formData);
+                //console.log("Form Data:", formData);
 
                 try {
                     const response = await fetch('http://localhost:8085/appointment', {
