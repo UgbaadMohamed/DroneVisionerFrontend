@@ -38,10 +38,10 @@
     padding: 25px 30px 10px;
     justify-content: space-between;
 }
-header .icons{
+.icons{
     display: flex;
 }
-header .icons span{
+.icons span{
     height: 38px;
     width: 38px;
     margin: 0 1px;
@@ -56,11 +56,11 @@ header .icons span{
 .icons span:last-child{
     margin-right: -10px;
 }
-header .icons span:hover{
+.icons span:hover{
     background: #f2f2f2;
 }
-header .current-date{
-    font-size: 1.45rem;
+.current-date{
+    font-size: 1.30rem;
     font-weight: 500;
 }
 .calendar{
@@ -144,10 +144,10 @@ header .current-date{
     margin-left: 6.4em;
 }
 
-/* Dropdown button on hover & focus */
+/* Dropdown button on hover & focus
 .dropbtn:hover, .dropbtn:focus {
-    background-color: #2980B9;
-}
+    background-color: #43b929;
+}*/
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
@@ -165,6 +165,7 @@ header .current-date{
     z-index: 1;
     max-height:200px;
     overflow:scroll;
+    margin-left: 5.5em;
 }
 
 /* Show the dropdown content on hover */
@@ -186,6 +187,11 @@ header .current-date{
 
 }
 
+/* Show the dropdown content when the "show" class is present */
+.dropdown-content.show {
+    display: grid;
+}
+
 
 
 /*location*/
@@ -197,6 +203,7 @@ header .current-date{
 
 #location {
     margin-left: 6.4em;
+    flex-grow: 0.25;
 }
 
 #suggestionsContainer {
@@ -238,7 +245,6 @@ header .current-date{
 .input-section input,
 .input-section textarea,
 .input-section button {
-
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -255,16 +261,12 @@ header .current-date{
     margin-left: 10px; /* Adjusted margin for better spacing */
 }
 
-#dropdownButtonDate {
-    margin-left: -1px; /* Adjusted margin for better spacing */
-}
-
 /* Button styling */
 button {
 }
 
 button:hover {
-    background-color: #2980B9;
+    background-color: #a2a2a2;
 }
 
 .next-button{
@@ -279,3 +281,39 @@ button:hover {
 }
 
 /* Add any additional styling as needed */
+
+.combined-btn-date {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-left: 8.1em;
+}
+
+.combined-btn-date span
+.combined-btn-time span {
+    margin-left: -0.1px; /* Adjusted margin for spacing between text and arrow */
+
+}
+
+.combined-btn-time {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-left: 5.4em;
+}
+
+#confirm-date-btn{
+    margin-left: 8em;
+
+}
+

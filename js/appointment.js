@@ -30,7 +30,8 @@ function populateDropdown() {
 //TIME DROPDOWN --------------------------------------------------------------------------------------------
 
 function showTimeDropdown() {
-    document.getElementById("timeDropdown").classList.toggle("show");
+    var dropdown = document.getElementById("timeDropdown");
+    dropdown.classList.toggle("show");
 }
 
 //Close the dropdown menu if the user clicks outside of it
@@ -61,21 +62,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
 var clickedDay;
 let isCalendarVisible = false; // Variable to track the visibility of the calendar
+let calendarContainer = document.getElementById('calendarContainer');
 
 // getting new date, current year and month
 let date = new Date(),
     currYear = date.getFullYear(),
     currMonth = date.getMonth();
 
+function removeCalendarElements(){
+    calendarContainer.innerHTML = '';
+    isCalendarVisible = false; // Reset the visibility state
+}
+
 function showCalendar() {
     // Check if the calendar is already visible
     if (isCalendarVisible) {
         // Calendar is visible, so remove the calendar elements
-        calendarContainer.innerHTML = '';
-        isCalendarVisible = false; // Reset the visibility state
+        removeCalendarElements()
     } else {
         // Create the calendar container dynamically
-        const calendarContainer = document.getElementById('calendarContainer');
+        calendarContainer = document.getElementById('calendarContainer');
 
         const currentDate = document.createElement('p');
         currentDate.classList.add('current-date');
@@ -85,22 +91,23 @@ function showCalendar() {
         prevNextIconsContainer.classList.add('icons');
         calendarContainer.appendChild(prevNextIconsContainer);
 
-        const prevIcon = document.createElement('button');
+        const prevIcon = document.createElement('span');
         prevIcon.id = 'prev';
         prevIcon.classList.add('material-symbols-rounded');
         prevIcon.textContent = 'chevron_left';
         prevNextIconsContainer.appendChild(prevIcon);
 
-        const nextIcon = document.createElement('button');
+        const nextIcon = document.createElement('span');
         nextIcon.id = 'next';
         nextIcon.classList.add('material-symbols-rounded');
         nextIcon.textContent = 'chevron_right';
         prevNextIconsContainer.appendChild(nextIcon);
 
-        /*const confirmDate = document.createElement('button');
-        nextIcon.id = 'confirm-date-btn';
-        nextIcon.textContent = 'Bekræft dato';
-        prevNextIconsContainer.appendChild(confirmDate);*/
+        const confirmDate = document.createElement('button');
+        confirmDate.id = 'confirm-date-btn';
+        confirmDate.textContent = 'Bekræft dato';
+        confirmDate.addEventListener('click', removeCalendarElements)
+        prevNextIconsContainer.appendChild(confirmDate);
 
         const calendarDiv = document.createElement('div');
         calendarDiv.classList.add('calendar');
@@ -205,8 +212,11 @@ function handleClickDay() {
             clickedDay.classList.add('active');
 
             // Set the selected date in the hidden input field
-            document.getElementById('selectedDate').value =
+            var selectedDate =
                 `${currYear}-${(currMonth + 1).toString().padStart(2, '0')}-${clickedDay.innerText.padStart(2, '0')}`;
+
+            document.getElementById('selectedDate').value = selectedDate;
+            document.getElementById('choose-date-btn').innerText = selectedDate;
         }
     });
 }
@@ -222,13 +232,16 @@ function handleClickTime() {
         timeDropdown.addEventListener('click', function (event) {
             if (event.target.tagName === 'A') {
                 const selectedTime = event.target.textContent.trim();
-                //console.log('Clicked Time Entry:', selectedTime);
                 document.getElementById('selectedTime').value = selectedTime;
-                document.getElementById("timeDropdown").classList.remove("show");
+                document.getElementById('select-time-btn').innerText = selectedTime;
+
+                // Toggle the "show" class to control visibility
+                timeDropdown.classList.toggle('show');
             }
         });
     }
 }
+
 
 
 //POST APPOINTMENT TO DATABASE-----------------------------------------------------------------------------------------
@@ -277,7 +290,6 @@ function postAppointmentToDatabase() {
         }
 
     }
-
 
     function submitForm() {
     window.location.href = '/templates/customer.html';

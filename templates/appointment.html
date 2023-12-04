@@ -26,9 +26,11 @@
 
   <div class="input-section">
   <label class="date">Dato: </label>
-  <button onclick="showCalendar()" class="dropbtn">Vælg dato</button>
 
-    <button onclick="showCalendar()" id="dropdownButtonDate" class="material-symbols-rounded">arrow_drop_down</button>
+  <button onclick="showCalendar()" class="combined-btn-date" id="choose-date-btn">
+    Vælg dato
+    <span class="material-symbols-rounded">arrow_drop_down</span>
+  </button>
 
   <br><br>
 
@@ -37,12 +39,15 @@
 
   <div id="map"></div>  <!--??-->
 
-
   <div class="input-section">
     <label>Tidspunkt:</label>
     <div class="dropdown">
-      <button onclick="showTimeDropdown()" class="dropbtn">Vælg tidspunkt</button>
-      <button onclick="showTimeDropdown()" id="dropdownButtonTime" class="material-symbols-rounded">arrow_drop_down</button>
+
+      <button onclick="showTimeDropdown()" class="combined-btn-time" id="select-time-btn">
+        Vælg tidspunkt
+        <span class="material-symbols-rounded">arrow_drop_down</span>
+      </button>
+
       <div id="timeDropdown" class="dropdown-content"></div>
     </div>
   </div>
