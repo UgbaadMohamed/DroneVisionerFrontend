@@ -10,13 +10,19 @@
 .body{
     margin-left: 100px;
     background: white;
+    padding-bottom: 40px;
 }
 
 .heading{
     margin-top: 50px;
+    margin-bottom: 50px;
     text-align: center;
     color: #829d65;
     font-size: 2.5rem;
+}
+
+.date{
+    margin-right: 6em;
 }
 
 .wrapper{
@@ -130,12 +136,12 @@ header .current-date{
 
 /* Dropdown Button */
 .dropbtn {
-    background-color: #3498DB;
-    color: white;
+    background-color: white;
     padding: 16px;
     font-size: 16px;
-    border: none;
     cursor: pointer;
+
+    margin-left: 6.4em;
 }
 
 /* Dropdown button on hover & focus */
@@ -190,8 +196,7 @@ header .current-date{
 }
 
 #location {
-    margin-top: 2em; /* or another relative unit */
-    margin-right: 4em; /* or another relative unit */
+    margin-left: 6.4em;
 }
 
 #suggestionsContainer {
@@ -218,21 +223,22 @@ header .current-date{
     resize: vertical; /* Allow vertical resizing */
 }
 
-
 /* Input styling */
 .input-section {
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
 }
 
 .input-section label {
     font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
+    margin-right: 10px; /* Adjusted margin for better spacing */
 }
 
 .input-section input,
-.input-section textarea {
-    width: 30%;
+.input-section textarea,
+.input-section button {
+
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -240,15 +246,21 @@ header .current-date{
     margin-top: 5px;
 }
 
+.button-container {
+    display: flex;
+    align-items: center;
+}
+
+.button-container button {
+    margin-left: 10px; /* Adjusted margin for better spacing */
+}
+
+#dropdownButtonDate {
+    margin-left: -1px; /* Adjusted margin for better spacing */
+}
+
 /* Button styling */
 button {
-    background-color: #3498DB;
-    color: white;
-    padding: 12px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 button:hover {
@@ -257,6 +269,13 @@ button:hover {
 
 .next-button{
     margin-left: 1200px;
+    background-color: #3498DB;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 /* Add any additional styling as needed */

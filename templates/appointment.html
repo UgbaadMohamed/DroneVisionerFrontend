@@ -24,27 +24,32 @@
 
 <form id="appointmentForm" class="body" method="POST">
 
-  <button onclick="calendar()" class="dropbtn" >Vælg dato</button>
+  <div class="input-section">
+  <label class="date">Dato: </label>
+  <button onclick="showCalendar()" class="dropbtn">Vælg dato</button>
 
-    <span id="dropdownButton" class="material-symbols-rounded">arrow_drop_down</span>
+    <button onclick="showCalendar()" id="dropdownButtonDate" class="material-symbols-rounded">arrow_drop_down</button>
+
+  <br><br>
 
 <div id="calendarContainer" class="wrapper"></div>
+  </div>
 
-  <input type="hidden" id="selectedDate" name="selectedDate">
-  <input type="hidden" id="selectedTime" name="selectedTime">
+  <div id="map"></div>  <!--??-->
 
-  <div id="map"></div>
 
   <div class="input-section">
-    <label>Vælg tidspunkt:</label>
+    <label>Tidspunkt:</label>
     <div class="dropdown">
-      <button onclick="showTimeDropdown()" class="dropbtn">Vælg start tid</button>
+      <button onclick="showTimeDropdown()" class="dropbtn">Vælg tidspunkt</button>
+      <button onclick="showTimeDropdown()" id="dropdownButtonTime" class="material-symbols-rounded">arrow_drop_down</button>
       <div id="timeDropdown" class="dropdown-content"></div>
     </div>
   </div>
 
+
   <div class="input-section">
-    <label>Indtast adresse:</label>
+    <label class="enter-address">Adresse:</label>
     <input type="text" id="location" placeholder="Indtast adresse" oninput="suggestAddress()">
     <div id="suggestionsContainer"></div>
   </div>
@@ -52,10 +57,13 @@
   <div class="input-section">
     <label for="description">Begivenhedsdetaljer:</label>
     <textarea name="description" id="description" placeholder="Skriv en kort beskrivelse (max 500 tegn)" maxlength="500"
-              required></textarea>
+              ></textarea>
   </div>
 
-  <button class="next-button" type="submit">Videre</button>
+  <input type="hidden" id="selectedDate" name="selectedDate">
+  <input type="hidden" id="selectedTime" name="selectedTime">
+
+  <button class="next-button" type="submit" onclick="submitForm()">Videre</button>
 </form>
 </body>
 

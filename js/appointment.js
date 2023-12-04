@@ -67,7 +67,7 @@ let date = new Date(),
     currYear = date.getFullYear(),
     currMonth = date.getMonth();
 
-function calendar() {
+function showCalendar() {
     // Check if the calendar is already visible
     if (isCalendarVisible) {
         // Calendar is visible, so remove the calendar elements
@@ -85,17 +85,22 @@ function calendar() {
         prevNextIconsContainer.classList.add('icons');
         calendarContainer.appendChild(prevNextIconsContainer);
 
-        const prevIcon = document.createElement('span');
+        const prevIcon = document.createElement('button');
         prevIcon.id = 'prev';
         prevIcon.classList.add('material-symbols-rounded');
         prevIcon.textContent = 'chevron_left';
         prevNextIconsContainer.appendChild(prevIcon);
 
-        const nextIcon = document.createElement('span');
+        const nextIcon = document.createElement('button');
         nextIcon.id = 'next';
         nextIcon.classList.add('material-symbols-rounded');
         nextIcon.textContent = 'chevron_right';
         prevNextIconsContainer.appendChild(nextIcon);
+
+        /*const confirmDate = document.createElement('button');
+        nextIcon.id = 'confirm-date-btn';
+        nextIcon.textContent = 'Bekræft dato';
+        prevNextIconsContainer.appendChild(confirmDate);*/
 
         const calendarDiv = document.createElement('div');
         calendarDiv.classList.add('calendar');
@@ -122,6 +127,7 @@ function calendar() {
 // storing full name of all months in array
         const months = ["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli",
             "August", "September", "Oktober", "November", "December"];
+
 
         //Check if the days of the week have already been inserted
         const weeksTag = document.querySelector(".weeks");
@@ -269,13 +275,14 @@ function postAppointmentToDatabase() {
         } else {
             console.error('Form with ID "appointmentForm" not found');
         }
+
     }
 
-    /*--------------
+
     function submitForm() {
     window.location.href = '/templates/customer.html';
     }
 
 
-     */
+
 
