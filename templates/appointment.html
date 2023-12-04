@@ -17,33 +17,21 @@
 </head>
 
 <body>
+
 <div id="header-placeholder"></div>
 
-<form id="appointmentForm" method="POST">
+<h3 class="heading">Book din aftale her</h3>
+
+<form id="appointmentForm" class="body" method="POST">
 
   <button onclick="calendar()" class="dropbtn" >Vælg dato</button>
 
     <span id="dropdownButton" class="material-symbols-rounded">arrow_drop_down</span>
 
-    <div id="calendarContainer" class="wrapper">
-      <header>
-        <p class="current-date"></p>
-        <div class="icons">
-          <span id="prev" class="material-symbols-rounded">chevron_left</span>
-          <span id="next" class="material-symbols-rounded">chevron_right</span>
-        </div>
-      </header>
-      <div class="calendar">
-      <ul class="weeks">
+<div id="calendarContainer" class="wrapper"></div>
 
-      </ul>
-      <ul class="days"></ul>
-    </div>
-    </div>
-
-
-
-
+  <input type="hidden" id="selectedDate" name="selectedDate">
+  <input type="hidden" id="selectedTime" name="selectedTime">
 
   <div id="map"></div>
 
@@ -67,7 +55,7 @@
               required></textarea>
   </div>
 
-  <button type="submit">Videre</button>
+  <button class="next-button" type="submit">Videre</button>
 </form>
 </body>
 

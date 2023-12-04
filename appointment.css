@@ -2,18 +2,22 @@
 /* Calender*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 *{
-    margin: 0;
+    margin-left: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-body{
-
-
-
+.body{
+    margin-left: 100px;
     background: white;
 }
 
+.heading{
+    margin-top: 50px;
+    text-align: center;
+    color: #829d65;
+    font-size: 2.5rem;
+}
 
 .wrapper{
     width: 350px;
@@ -249,6 +253,10 @@ button {
 
 button:hover {
     background-color: #2980B9;
+}
+
+.next-button{
+    margin-left: 1200px;
 }
 
 /* Add any additional styling as needed */
