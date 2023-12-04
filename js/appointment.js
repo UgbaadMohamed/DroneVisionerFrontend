@@ -1,4 +1,4 @@
-
+//LOOP TIL TIME --------------------------------------------------------------------------------------------
 
 function generateTimeOptions() {
     var startTime = 10; // Starting hour
@@ -29,7 +29,7 @@ function populateDropdown() {
 
 //TIME DROPDOWN --------------------------------------------------------------------------------------------
 
-function myFunction() {
+function showTimeDropdown() {
     document.getElementById("timeDropdown").classList.toggle("show");
 }
 
@@ -50,11 +50,12 @@ window.onclick = function(event) {
 //DOM CONTENT LOADED --------------------------------------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', function () {
-    calender();
+
     handleClickDay();
     handleClickTime();
     populateDropdown();
     postAppointmentToDatabase();
+
 })
 
 //CALENDER --------------------------------------------------------------------------------------------
@@ -66,14 +67,25 @@ let date = new Date(),
     currYear = date.getFullYear(),
     currMonth = date.getMonth();
 
-function calender() {
+function calendar() {
+
     const daysTag = document.querySelector(".days"),
         currentDate = document.querySelector(".current-date"),
         prevNextIcon = document.querySelectorAll(".icons span");
 
+
 // storing full name of all months in array
     const months = ["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli",
         "August", "September", "Oktober", "November", "December"];
+
+    //Check if the days of the week have already been inserted
+    const weeksTag = document.querySelector(".weeks");
+    if (!weeksTag.innerHTML.trim()) {
+        // Create days of the week dynamically
+        const daysOfWeek = ["Man", "Tir", "Ons", "Tor", "Fre", "Lør", "Søn"];
+        weeksTag.innerHTML = daysOfWeek.map(day => `<li>${day}</li>`).join('');
+    }
+
 
     const renderCalendar = () => {
         let firstDayofMonth = new Date(currYear, currMonth, 0).getDay(), // getting first day of month /0 i stedet for 1
@@ -99,6 +111,7 @@ function calender() {
         currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
         daysTag.innerHTML = liTag;
     }
+
     renderCalendar();
 
     prevNextIcon.forEach(icon => { // getting prev and next icons
@@ -122,24 +135,26 @@ function calender() {
 
 //WHEN DAY CLICKED--------------------------------------------------------------------------------------------
 function handleClickDay() {
-        var daysContainer = document.querySelector('.days');
+    var daysContainer = document.querySelector('.days');
 
-        daysContainer.addEventListener('click', function (event) {
-            if (event.target.tagName === 'LI') {
-                clickedDay = event.target;
+    daysContainer.addEventListener('click', function (event) {
+        if (event.target.tagName === 'LI') {
+            clickedDay = event.target;
 
-                daysContainer.querySelectorAll('li').forEach(function (day) {
-                    day.classList.remove('active');
-                });
+            daysContainer.querySelectorAll('li').forEach(function (day) {
+                day.classList.remove('active');
+            });
 
-                clickedDay.classList.add('active');
+            clickedDay.classList.add('active');
 
-                // Set the selected date in the hidden input field
-                document.getElementById('selectedDate').value =
-                    `${currYear}-${(currMonth + 1).toString().padStart(2, '0')}-${clickedDay.innerText.padStart(2, '0')}`;
-            }
-        });
-    }
+            // Set the selected date in the hidden input field
+            document.getElementById('selectedDate').value =
+                `${currYear}-${(currMonth + 1).toString().padStart(2, '0')}-${clickedDay.innerText.padStart(2, '0')}`;
+
+        }
+    });
+}
+
 
 //TODO:TIME!!!!!!!!!!!!!! //kalde dom content en gang og så kalde de forskelle funktioner
 //WHEN TIMESTAMP CLICKED--------------------------------------------------------------------------------------------

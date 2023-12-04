@@ -1,0 +1,254 @@
+/* Import Google font - Poppins */
+/* Calender*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+
+
+
+    background: white;
+}
+
+
+.wrapper{
+    width: 350px;
+    margin-right: 0;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+.wrapper header{
+    display: flex;
+    align-items: center;
+    padding: 25px 30px 10px;
+    justify-content: space-between;
+}
+header .icons{
+    display: flex;
+}
+header .icons span{
+    height: 38px;
+    width: 38px;
+    margin: 0 1px;
+    cursor: pointer;
+    color: #878787;
+    text-align: center;
+    line-height: 38px;
+    font-size: 1.9rem;
+    user-select: none;
+    border-radius: 50%;
+}
+.icons span:last-child{
+    margin-right: -10px;
+}
+header .icons span:hover{
+    background: #f2f2f2;
+}
+header .current-date{
+    font-size: 1.45rem;
+    font-weight: 500;
+}
+.calendar{
+    padding: 10px;
+}
+.calendar ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+    margin-bottom: 0; /* Add this line to remove margin bottom */
+}
+.calendar .days{
+    margin-bottom: 20px;
+}
+.calendar li{
+    font-size: 1rem; /* Adjust the font size as needed */
+    color: #333;
+    width: calc(100% / 7);
+    font-size: 1.07rem;
+    /*order: 2; hej*/
+}
+.calendar .weeks li{
+    font-weight: 500;
+    cursor: default;
+}
+.calendar .days li{
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+    margin-top: 30px;
+}
+.days li.inactive{
+    color: #aaa;
+}
+.days li.active{
+    color: #fff;
+}
+.days li::before{
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+.days li.active::before{
+    background: #829d65;
+}
+.days li:not(.active):hover::before{
+    background: #f2f2f2;
+}
+
+#date {
+    background-color: #a2a2a2; /* Green background color */
+    color: white; /* White text color */
+    padding: 5px 8px; /* Padding to give some space around the text */
+    font-size: 16px; /* Font size */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add a slight border-radius for rounded corners */
+    cursor: pointer; /* Change cursor on hover to indicate it's clickable */
+}
+
+#date:hover {
+    background-color: #829d65; /* Darker green color on hover */
+}
+
+
+/*Time*/
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    max-height:200px;
+    overflow:scroll;
+}
+
+/* Show the dropdown content on hover */
+.dropdown:hover .dropdown-content {
+    display: grid;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+
+}
+
+
+
+/*location*/
+
+
+#map {
+    height: 0;
+}
+
+#location {
+    margin-top: 2em; /* or another relative unit */
+    margin-right: 4em; /* or another relative unit */
+}
+
+#suggestionsContainer {
+    margin-top: 3em; /* or another relative unit */
+    margin-right: 1em; /* or another relative unit */
+}
+
+
+#suggestionList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#suggestionList li {
+    padding: 5px;
+    cursor: pointer;
+}
+
+/* Add this to your existing CSS */
+#description {
+    width: 50%; /* Set the width as needed */
+    height: 100px; /* Set the height as needed */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+
+/* Input styling */
+.input-section {
+    margin-bottom: 20px;
+}
+
+.input-section label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-section input,
+.input-section textarea {
+    width: 30%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+/* Button styling */
+button {
+    background-color: #3498DB;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980B9;
+}
+
+/* Add any additional styling as needed */
