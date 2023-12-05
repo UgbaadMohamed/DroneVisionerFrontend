@@ -1,8 +1,9 @@
 document.getElementById('bookingForm').addEventListener('submit', function (event) {
 
-        // var currentDate = new Date();
-        //  var formattedDate = currentDate.toISOString().split('T')[0];
+        var currentDate = new Date();
+        var formattedDate = currentDate.toISOString().split('T')[0];
         document.getElementById('registration_date').value = formattedDate;
+
 
         const formData = {
             first_Name: document.getElementById("first_Name").value,
@@ -14,7 +15,31 @@ document.getElementById('bookingForm').addEventListener('submit', function (even
         };
 
 
-        fetch('http://localhost:8085/register', {
+    fetch('http://localhost:8085/register', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+
+            // Delay for 5 seconds before redirecting
+            setTimeout(() => {
+                window.location.href = 'receipt.html';
+            }, 0);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+// Prevent the default form submission
+    event.preventDefault();
+});
+
+     /*   fetch('http://localhost:8085/register', {
             method: 'POST',
             body: JSON.stringify(formData),
             headers: {
@@ -30,7 +55,7 @@ document.getElementById('bookingForm').addEventListener('submit', function (even
             .catch((error) => {
                 console.error('Error:', error);
             });
-    });
+    });*/
 
 
     var dayDropdown = document.getElementById("birthday");
@@ -66,6 +91,10 @@ document.getElementById('bookingForm').addEventListener('submit', function (even
         }
     });
 
+
+
+
+
     function validateForm() {
         var birthday = document.getElementById("birthday").value;
         var birthmonth = document.getElementById("birthmonth").value;
@@ -93,6 +122,10 @@ document.getElementById('bookingForm').addEventListener('submit', function (even
 
         return age;
     }
+
+
+
+
 
 
 
