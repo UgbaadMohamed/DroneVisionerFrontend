@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     postAppointmentToDatabase();
 });
 
-})
+
 
 //CALENDER --------------------------------------------------------------------------------------------
 
