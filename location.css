@@ -1,20 +1,17 @@
 #map {
-    height: 400px;
+    height: 0;
 }
 
 #location {
-    margin-top: 600px;
-    margin-right: 800px;
+    margin-top: 2em; /* or another relative unit */
+    margin-right: 4em; /* or another relative unit */
 }
 
 #suggestionsContainer {
-    position: absolute;
-    background-color: white;
-    z-index: 999;
-    margin-top: 710px;
-    margin-right: 70px;
-
+    margin-top: 3em; /* or another relative unit */
+    margin-right: 1em; /* or another relative unit */
 }
+
 
 #suggestionList {
     list-style-type: none;
@@ -25,4 +22,11 @@
 #suggestionList li {
     padding: 5px;
     cursor: pointer;
+}
+
+/* Add this to your existing CSS */
+#description {
+    width: 50%; /* Set the width as needed */
+    height: 100px; /* Set the height as needed */
+    resize: vertical; /* Allow vertical resizing */
 }
