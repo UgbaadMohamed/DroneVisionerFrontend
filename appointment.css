@@ -271,13 +271,17 @@ button:hover {
 
 .next-button{
     margin-left: 1200px;
-    background-color: #3498DB;
+    background-color: green;
     color: white;
-    padding: 12px 20px;
-    font-size: 16px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.next-button:hover {
+    background-color: rgba(0, 128, 0, 0.81) !important;
+    color: rgb(245, 243, 243) !important;
 }
 
 /* Add any additional styling as needed */
