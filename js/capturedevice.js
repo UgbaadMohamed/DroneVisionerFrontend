@@ -68,13 +68,26 @@ async function submitForm() {
             }),
         });
 
-        const captureDeviceData = await captureDeviceResponse.json();
-        console.log('CaptureDevice data:', captureDeviceData);
+
+            const captureDeviceData = await captureDeviceResponse.json();
+
+            const captureDeviceId = captureDeviceData.captureDevice_ID; // Use the correct property name
+
+            //console.log('Capture Device ID:', captureDeviceId);
+
+
+       window.location.href = `appointment.html?captureDeviceId=${captureDeviceId}`;
+
     } else {
         console.error('Error fetching existing visual media type');
+
     }
 
-    window.location.href = 'appointment.html';
+
+    //plan a forsætte
+    //plan b fetch det og put det ind i html.
+    //routers(controller)
+
 }
 
 
