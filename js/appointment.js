@@ -48,15 +48,26 @@ window.onclick = function(event) {
     }
 }
 
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 //DOM CONTENT LOADED --------------------------------------------------------------------------------------------
 
+
 document.addEventListener('DOMContentLoaded', function () {
+    // Retrieve the captureDeviceId from the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const captureDeviceId = urlParams.get('captureDeviceId');
+    document.getElementById('captureDeviceId').value = captureDeviceId;
 
     populateDropdown();
     handleClickTime();
     postAppointmentToDatabase();
+});
 
-})
 
 //CALENDER --------------------------------------------------------------------------------------------
 
@@ -75,6 +86,13 @@ function removeCalendarElements(){
 }
 
 function showCalendar() {
+// Adjust elements below the calendar
+    const elementsBelowCalendarContainer = document.getElementById('elementsBelowCalendarContainer');
+
+    if (elementsBelowCalendarContainer) {
+        elementsBelowCalendarContainer.style.marginTop = !isCalendarVisible ? '550px' : '0';
+    }
+
     // Check if the calendar is already visible
     if (isCalendarVisible) {
         // Calendar is visible, so remove the calendar elements
@@ -82,6 +100,16 @@ function showCalendar() {
     } else {
         // Create the calendar container dynamically
         calendarContainer = document.getElementById('calendarContainer');
+
+        // Calculate the position of the calendar relative to the "Vælg dato" button
+        const dropdownButton = document.getElementById('choose-date-btn');
+        const dropdownRect = dropdownButton.getBoundingClientRect();
+        const calendarHeight = calendarContainer.offsetHeight;
+
+        // Set the position of the calendar to be below the "Vælg dato" button
+        calendarContainer.style.position = 'absolute';
+        calendarContainer.style.left = `${dropdownRect.left}px`;
+        calendarContainer.style.top = `${dropdownRect.bottom}px`;
 
         const currentDate = document.createElement('p');
         currentDate.classList.add('current-date');
@@ -221,8 +249,6 @@ function handleClickDay() {
     });
 }
 
-
-//TODO:TIME!!!!!!!!!!!!!! //kalde dom content en gang og så kalde de forskelle funktioner
 //WHEN TIMESTAMP CLICKED--------------------------------------------------------------------------------------------
 
 function handleClickTime() {
@@ -247,53 +273,65 @@ function handleClickTime() {
 //POST APPOINTMENT TO DATABASE-----------------------------------------------------------------------------------------
 
 function postAppointmentToDatabase() {
-        const form = document.getElementById('appointmentForm');
+    const form = document.getElementById('appointmentForm');
 
-        if (form) {
-            form.onsubmit = async function (event) {
-                event.preventDefault(); // Prevent default form submission
 
-                const formData = {
-                    location: document.getElementById("location").value,
-                    description: document.getElementById("description").value,
-                    date: document.getElementById("selectedDate").value, //date
-                    time: document.getElementById("selectedTime").value,
+    if (form) {
+        form.onsubmit = async function (event) {
+            event.preventDefault(); // Prevent default form submission
 
-                };
 
-                //console.log("Form Data:", formData);
-
-                try {
-                    const response = await fetch('http://localhost:8085/appointment', {
-                        method: 'POST',
-                        body: JSON.stringify(formData),
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                    });
-
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-
-                    const data = await response.json();
-                    console.log('Success:', data);
-
-                    // Uncomment the line below if you want to redirect after successful submission
-                    // window.location.href = "/header.html";
-                } catch (error) {
-                    console.error('Error:', error);
+            const formData = {
+                location: document.getElementById("location").value,
+                description: document.getElementById("description").value,
+                date: document.getElementById("selectedDate").value, //date
+                time: document.getElementById("selectedTime").value,
+                captureDevice: {
+                    capture_deviceid_fk: document.getElementById("captureDeviceId").value
                 }
-            };
-        } else {
-            console.error('Form with ID "appointmentForm" not found');
-        }
+            }
 
+            console.log("Form Data:", formData);
+
+
+            try {
+                const response = await fetch('http://localhost:8085/appointment', {
+                    method: 'POST',
+                    body: JSON.stringify(formData),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                });
+
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+
+                const data = await response.json();
+                console.log('Success:', data);
+
+
+                // Uncomment the line below if you want to redirect after successful submission
+                // window.location.href = "/header.html";
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+    } else {
+        console.error('Form with ID "appointmentForm" not found');
     }
 
-    function submitForm() {
-    window.location.href = '/templates/customer.html';
-    }
+
+}
+
+
+function submitForm() {
+    //window.location.href = '/templates/customer.html';
+}
+
+
 
 
 
