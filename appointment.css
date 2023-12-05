@@ -236,11 +236,13 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    width: 400px;
 }
 
 .input-section label {
     font-weight: bold;
     margin-right: 10px;
+
 }
 
 
@@ -248,6 +250,7 @@
 .input-section textarea,
 .input-section button {
     padding: 8px;
+    width: 200px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -319,3 +322,8 @@ button:hover {
 
 }
 
+/*#suggestionList{
+    margin-top: 150px !important;
+    margin-right: 1500px !important;
+    display: flex !important;
+}*/
