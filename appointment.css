@@ -38,6 +38,7 @@
     padding: 25px 30px 10px;
     justify-content: space-between;
 }
+
 .icons{
     display: flex;
 }
@@ -239,8 +240,9 @@
 
 .input-section label {
     font-weight: bold;
-    margin-right: 10px; /* Adjusted margin for better spacing */
+    margin-right: 10px;
 }
+
 
 .input-section input,
 .input-section textarea,
@@ -271,17 +273,13 @@ button:hover {
 
 .next-button{
     margin-left: 1200px;
-    background-color: green;
+    background-color: #829d65;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 20px;
+    font-size: 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.next-button:hover {
-    background-color: rgba(0, 128, 0, 0.81) !important;
-    color: rgb(245, 243, 243) !important;
 }
 
 /* Add any additional styling as needed */

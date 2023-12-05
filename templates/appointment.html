@@ -28,9 +28,9 @@
 <form id="appointmentForm" class="body" method="POST">
 
   <div class="input-section">
-  <label class="date">Dato: </label>
+  <label class="date keep-position">Dato: </label>
 
-  <button onclick="showCalendar()" class="combined-btn-date" id="choose-date-btn">
+  <button onclick="showCalendar()" class="combined-btn-date keep-position" id="choose-date-btn">
     Vælg dato
     <span class="material-symbols-rounded">arrow_drop_down</span>
   </button>
@@ -40,6 +40,7 @@
 <div id="calendarContainer" class="wrapper"></div>
   </div>
 
+  <div id="elementsBelowCalendarContainer">
   <div id="map"></div>  <!--??-->
 
   <div class="input-section">
@@ -70,9 +71,12 @@
 
   <input type="hidden" id="selectedDate" name="selectedDate">
   <input type="hidden" id="selectedTime" name="selectedTime">
+    <input type="hidden" id="captureDeviceId" name="captureDeviceId">
 
-  <button class="next-button" type="submit"  onclick="submitForm()">Videre</button>
+  <button class="next-button" type="submit" onclick="submitForm()">Videre</button>
+  </div>
 </form>
+
 </body>
 <br><br><br><br><br><br><br>
 <div id="footer-placeholder"></div>
