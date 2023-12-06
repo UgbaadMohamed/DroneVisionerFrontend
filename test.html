@@ -18,6 +18,7 @@
   <script src="/js/footer.js"></script>
   <script src="/js/appointment.js"></script>
   <script src="/js/location.js"></script>
+  <script src="/js/payment.js"></script>
   <link rel="stylesheet" href="../appointment.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -101,14 +102,67 @@
               </div>
             </div>
             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+           <!--   <p1 style="margin-top: -450px; margin-left: 40%;">Vælg en prispakke</p1> !-->
+
+              <p id="price"></p>
+
+              <!-- Primary card -->
+              <div class="card bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header">Pakke 1</div>
+                <div class="card-body">
+                  <h5 class="card-title">1 time</h5>
+                  <p class="card-text">Få op til 20 sekunders professionelt indhold ved booking.</p>
+                </div>
+                <p1 style="margin-right: 40px !important;"> Pris 5000kr</p1>
+                <div class="button-box">
+                  <input type="radio" name="prispakke" onclick="showPrice('prispakke1', 5000)" class="btn btn-primary">
+                </div>
+
+              </div>
+
+              <!-- Secondary card -->
+              <div class="card bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header">Pakke 2</div>
+                <div class="card-body">
+                  <h5 class="card-title">3 timer</h5>
+                  <p class="card-text">Få op til 40 sekunders professionelt indhold ved booking.</p>
+                </div>
+                <div class="button-box">
+                  <p1> Pris 6500kr</p1>
+                  <input type="radio" name="prispakke" onclick="showPrice('prispakke2', 6500)" class="btn btn-primary">
+                </div>
+              </div>
+
+              <!-- Success card -->
+              <div class="card bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header">Pakke 3</div>
+                <div class="card-body">
+                  <h5 class="card-title">5 timer</h5>
+                  <p class="card-text"> Få op til 1 sekunders professionelt indhold ved booking.</p>
+                </div>
+                <p1> Pris 12.500kr</p1>
+                <div class="button-box">
+                  <input type="radio" name="prispakke" onclick="showPrice('prispakke3', 12500)" class="btn btn-primary">
+                </div>
+              </div>
+
+              <div id="pricePopup">
+                <button> </button>
+                <p id="priceValue"></p>
+
+              </div>
               <div class="text-white px-3 py-4 p-md-5 mx-md-4"></div>
             </div>
+
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
+
 
 <!-- Add your closing tags and any additional content here -->
 
