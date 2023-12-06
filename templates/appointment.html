@@ -10,15 +10,12 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
   <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
-
-
   <script src="/js/appointment.js"></script>
   <script src="/js/location.js"></script>
   <script src="/js/header.js"></script>
   <script src="/js/footer.js"></script>
 
 </head>
-
 <body>
 
 <div id="header-placeholder"></div>
@@ -28,55 +25,55 @@
 <form id="appointmentForm" class="body" method="POST">
 
   <div class="input-section">
-  <label class="date keep-position">Dato: </label>
+    <label class="date keep-position">Dato: </label>
 
-  <button onclick="showCalendar()" class="combined-btn-date keep-position" id="choose-date-btn">
-    Vælg dato
-    <span class="material-symbols-rounded">arrow_drop_down</span>
-  </button>
+    <button onclick="showCalendar()" class="combined-btn-date keep-position" id="choose-date-btn">
+      Vælg dato
+      <span class="material-symbols-rounded">arrow_drop_down</span>
+    </button>
 
-  <br><br>
+    <br><br>
 
-<div id="calendarContainer" class="wrapper"></div>
+    <div id="calendarContainer" class="wrapper"></div>
   </div>
 
   <div id="elementsBelowCalendarContainer">
-  <div id="map"></div>  <!--??-->
+    <div id="map"></div>  <!--??-->
 
-  <div class="input-section">
-    <label>Tidspunkt:</label>
-    <div class="dropdown">
+    <div class="input-section">
+      <label>Tidspunkt:</label>
+      <div class="dropdown">
 
-      <button onclick="showTimeDropdown()" class="combined-btn-time" id="select-time-btn">
-        Vælg tidspunkt
-        <span class="material-symbols-rounded">arrow_drop_down</span>
-      </button>
+        <button onclick="showTimeDropdown()" class="combined-btn-time" id="select-time-btn">
+          Vælg tidspunkt
+          <span class="material-symbols-rounded">arrow_drop_down</span>
+        </button>
 
-      <div id="timeDropdown" class="dropdown-content"></div>
+        <div id="timeDropdown" class="dropdown-content"></div>
+      </div>
     </div>
-  </div>
 
 
-  <div class="input-section">
-    <label class="enter-address">Adresse:</label>
-    <input type="text" id="location" placeholder="Indtast adresse" oninput="suggestAddress()">
-    <div id="suggestionsContainer"></div>
-  </div>
+    <div class="input-section">
+      <label class="enter-address">Adresse:</label>
+      <input type="text" id="location" placeholder="Indtast adresse" oninput="suggestAddress()">
+      <div id="suggestionsContainer"></div>
+    </div>
 
     <div id="elementsBelowAddressContainer">
 
-  <div class="input-section">
-    <label for="description">Begivenhedsdetaljer:</label>
-    <textarea name="description" id="description" placeholder="Skriv en kort beskrivelse (max 500 tegn)" maxlength="500"
-              ></textarea>
-  </div>
+      <div class="input-section">
+        <label for="description">Begivenhedsdetaljer:</label>
+        <textarea name="description" id="description" placeholder="Skriv en kort beskrivelse (max 500 tegn)" maxlength="500"
+        ></textarea>
+      </div>
 
-  <input type="hidden" id="selectedDate" name="selectedDate">
-  <input type="hidden" id="selectedTime" name="selectedTime">
-    <input type="hidden" id="captureDeviceId" name="captureDeviceId">
+      <input type="hidden" id="selectedDate" name="selectedDate">
+      <input type="hidden" id="selectedTime" name="selectedTime">
+      <input type="hidden" id="captureDeviceId" name="captureDeviceId">
 
-  <button class="next-button" type="submit" onclick="submitForm()">Videre</button>
-  </div>
+      <button class="next-button" type="submit" onclick="submitForm()">Videre</button>
+    </div>
 </form>
 </div>
 
