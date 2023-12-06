@@ -1,0 +1,329 @@
+/* Import Google font - Poppins */
+/* Calender*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+    margin-left: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.body{
+    margin-left: 100px;
+    background: white;
+    padding-bottom: 40px;
+}
+
+.heading{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+    color: #829d65;
+    font-size: 2.5rem;
+}
+
+.date{
+    margin-right: 6em;
+}
+
+.wrapper{
+    width: 350px;
+    margin-right: 0;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+.wrapper header{
+    display: flex;
+    align-items: center;
+    padding: 25px 30px 10px;
+    justify-content: space-between;
+}
+
+.icons{
+    display: flex;
+}
+.icons span{
+    height: 38px;
+    width: 38px;
+    margin: 0 1px;
+    cursor: pointer;
+    color: #878787;
+    text-align: center;
+    line-height: 38px;
+    font-size: 1.9rem;
+    user-select: none;
+    border-radius: 50%;
+}
+.icons span:last-child{
+    margin-right: -10px;
+}
+.icons span:hover{
+    background: #f2f2f2;
+}
+.current-date{
+    font-size: 1.30rem;
+    font-weight: 500;
+}
+.calendar{
+    padding: 10px;
+}
+.calendar ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+    margin-bottom: 0; /* Add this line to remove margin bottom */
+}
+.calendar .days{
+    margin-bottom: 20px;
+}
+.calendar li{
+    font-size: 1rem; /* Adjust the font size as needed */
+    color: #333;
+    width: calc(100% / 7);
+    font-size: 1.07rem;
+    /*order: 2; hej*/
+}
+.calendar .weeks li{
+    font-weight: 500;
+    cursor: default;
+}
+.calendar .days li{
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+    margin-top: 30px;
+}
+.days li.inactive{
+    color: #aaa;
+}
+.days li.active{
+    color: #fff;
+}
+.days li::before{
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+.days li.active::before{
+    background: #829d65;
+}
+.days li:not(.active):hover::before{
+    background: #f2f2f2;
+}
+
+#date {
+    background-color: #a2a2a2; /* Green background color */
+    color: white; /* White text color */
+    padding: 5px 8px; /* Padding to give some space around the text */
+    font-size: 16px; /* Font size */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add a slight border-radius for rounded corners */
+    cursor: pointer; /* Change cursor on hover to indicate it's clickable */
+}
+
+#date:hover {
+    background-color: #829d65; /* Darker green color on hover */
+}
+
+
+/*Time*/
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: white;
+    padding: 16px;
+    font-size: 16px;
+    cursor: pointer;
+
+    margin-left: 6.4em;
+}
+
+/* Dropdown button on hover & focus
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #43b929;
+}*/
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    max-height:200px;
+    overflow:scroll;
+    margin-left: 5.5em;
+}
+
+/* Show the dropdown content on hover */
+.dropdown:hover .dropdown-content {
+    display: grid;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+
+}
+
+/* Show the dropdown content when the "show" class is present */
+.dropdown-content.show {
+    display: grid;
+}
+
+
+
+/*location*/
+
+
+#map {
+    height: 0;
+}
+
+#location {
+    margin-left: 6.4em;
+    flex-grow: 0.25;
+}
+
+#suggestionsContainer {
+    margin-top: 3em; /* or another relative unit */
+    margin-right: 1em; /* or another relative unit */
+}
+
+
+#suggestionList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#suggestionList li {
+    padding: 5px;
+    cursor: pointer;
+}
+
+/* Add this to your existing CSS */
+#description {
+    width: 50%; /* Set the width as needed */
+    height: 100px; /* Set the height as needed */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+/* Input styling */
+.input-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 400px;
+}
+
+.input-section label {
+    font-weight: bold;
+    margin-right: 10px;
+
+}
+
+
+.input-section input,
+.input-section textarea,
+.input-section button {
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+}
+
+.button-container button {
+    margin-left: 10px; /* Adjusted margin for better spacing */
+}
+
+/* Button styling */
+button {
+}
+
+button:hover {
+    background-color: #a2a2a2;
+}
+
+.next-button{
+    margin-left: 1200px;
+    background-color: #829d65;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Add any additional styling as needed */
+
+.combined-btn-date {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-left: 8.1em;
+}
+
+.combined-btn-date span
+.combined-btn-time span {
+    margin-left: -0.1px; /* Adjusted margin for spacing between text and arrow */
+
+}
+
+.combined-btn-time {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-left: 5.4em;
+}
+
+#confirm-date-btn{
+    margin-left: 8em;
+
+}
+
+/*#suggestionList{
+    margin-top: 150px !important;
+    margin-right: 1500px !important;
+    display: flex !important;
+}*/

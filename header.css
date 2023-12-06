@@ -3,6 +3,7 @@ body {
     padding: 0;
     overflow: auto; /* Change overflow to auto to allow scrolling */
     position: relative;
+
 }
 
 .navbar {

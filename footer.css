@@ -1,0 +1,27 @@
+
+body{
+
+}
+.row {
+    margin-bottom: 0;
+}
+
+.row {
+    margin-bottom: 1rem;
+}
+
+.bg-1 {
+    background: #2d2d30;
+    color: #bdbdbd;
+}
+.container {
+    padding: 80px 120px;
+}
+
+.frontText {
+    margin-top: -200px;
+}
+
+
+
+

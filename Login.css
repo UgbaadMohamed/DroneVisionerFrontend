@@ -1,0 +1,32 @@
+.gradient-custom-2 {
+    background: rgba(161, 255, 115, 0.37); /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, rgba(38, 104, 7, 0.36), rgba(5, 99, 60, 0.27), rgba(0, 65, 106, 0.18)); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgba(41, 114, 5, 0.28), rgba(6, 104, 65, 0.28), rgba(0, 65, 106, 0.18)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.card-body {
+    color: black; /* Set text color to black */
+}
+
+.btn-primary {
+    background-color: rgba(0, 65, 106, 0.76); /* Set initial button color */
+    border-color: rgba(0, 65, 106, 0.81); /* Set initial border color */
+}
+
+.btn-primary:hover {
+    background-color: #00663d; /* Set hover button color to dark green */
+    border-color: #00663d; /* Set hover border color to dark green */
+}
+
+@media (min-width: 768px) {
+    .gradient-form {
+        height: 100vh !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .gradient-custom-2 {
+        border-top-right-radius: .3rem;
+        border-bottom-right-radius: .3rem;
+    }
+}
