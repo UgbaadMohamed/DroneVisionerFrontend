@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../booking.css">
+    <link rel="stylesheet" href="../location.css">
+    <link rel="stylesheet" href="../appointment.css">
+
+
+    <script src="/js/appointment.js"></script>
+    <script src="/js/location.js"></script>
+    <script src="/js/header.js"></script>
+    <script src="/js/footer.js"></script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<!------ Include the above in your HEAD tag ---------->
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+            <h3>Booking</h3>
+            <p>Book nemt med os idag og få en oplevelse!</p>
+        </div>
+        <div class="col-md-9 register-right">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"  aria-selected="true" >Event</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false" style="font-size: 17px">Persondata</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">Begivenhedsdetaljer</h3>
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <form id="appointmentForm" class="body" method="POST">
+
+                                    <div class="input-section">
+                                        <label class="date keep-position">Dato: </label>
+
+                                        <button onclick="showCalendar()" class="combined-btn-date keep-position" id="choose-date-btn">
+                                            Vælg dato
+                                            <span class="material-symbols-rounded"></span>
+                                        </button>
+
+                                        <br><br>
+
+                                        <div id="calendarContainer" class="wrapper"></div>
+                                    </div>
+
+
+                            </div>
+                            <div class="form-group">
+                                <div class="input-section">
+                                    <label>Tidspunkt:</label>
+                                    <div class="dropdown">
+
+                                        <button onclick="showTimeDropdown()" class="combined-btn-time" id="select-time-btn">
+                                            Vælg tidspunkt
+                                            <span class="material-symbols-rounded"></span>
+                                        </button>
+
+                                        <div id="timeDropdown" class="dropdown-content"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-section">
+                                    <label class="enter-address">Adresse:</label>
+                                    <input type="text" id="location" placeholder="Indtast adresse" oninput="suggestAddress()">
+                                    <div id="suggestionsContainer"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-section">
+                                    <label for="description">Begivenhedsdetaljer:</label>
+                                    <textarea name="description" id="description" placeholder="Skriv en kort beskrivelse (max 500 tegn)" maxlength="500"
+                                    ></textarea>
+                                </div>
+                            </div>
+
+                            <button class="next-button" type="submit" onclick="submitForm()">Videre</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h3  class="register-heading">Apply as a Hirer</h3>
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="First Name *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" />
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
+                                    <option>What is your Birthdate?</option>
+                                    <option>What is Your old Phone Number</option>
+                                    <option>What is your Pet Name?</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="`Answer *" value="" />
+                            </div>
+                            <input type="submit" class="btnRegister"  value="Register"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="footer-placeholder"></div>
+</body>
+</html>
+
+
+
+
+
+<!--
+<form id="appointmentForm" class="body" method="POST">
+
+    <div class="input-section">
+        <label class="date keep-position">Dato: </label>
+
+        <button onclick="showCalendar()" class="combined-btn-date keep-position" id="choose-date-btn">
+            Vælg dato
+            <span class="material-symbols-rounded"></span>
+        </button>
+
+        <br><br>
+
+        <div id="calendarContainer" class="wrapper"></div>
+    </div>
+
+    <div id="elementsBelowCalendarContainer">
+        <div id="map"></div>
+
+
+<div class="input-section">
+    <label>Tidspunkt:</label>
+    <div class="dropdown">
+
+        <button onclick="showTimeDropdown()" class="combined-btn-time" id="select-time-btn">
+            Vælg tidspunkt
+            <span class="material-symbols-rounded"></span>
+        </button>
+
+        <div id="timeDropdown" class="dropdown-content"></div>
+    </div>
+</div>
+
+<div class="input-section">
+    <label class="enter-address">Adresse:</label>
+    <input type="text" id="location" placeholder="Indtast adresse" oninput="suggestAddress()">
+    <div id="suggestionsContainer"></div>
+</div>
+
+<div id="elementsBelowAddressContainer">
+
+    <div class="input-section">
+        <label for="description">Begivenhedsdetaljer:</label>
+        <textarea name="description" id="description" placeholder="Skriv en kort beskrivelse (max 500 tegn)" maxlength="500"></textarea>
+    </div>
+
+    <input type="hidden" id="selectedDate" name="selectedDate">
+    <input type="hidden" id="selectedTime" name="selectedTime">
+    <input type="hidden" id="captureDeviceId" name="captureDeviceId">
+
+    <button class="next-button" type="submit" onclick="submitForm()">Videre</button>
+</div>
+</div>
+</form>
+!-->

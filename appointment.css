@@ -7,11 +7,7 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-.body{
-    margin-left: 100px;
-    background: white;
-    padding-bottom: 40px;
-}
+
 
 .heading{
     margin-top: 50px;
@@ -203,7 +199,7 @@
 }
 
 #location {
-    margin-left: 6.4em;
+    margin-right: 50px;
     flex-grow: 0.25;
 }
 
@@ -226,8 +222,8 @@
 
 /* Add this to your existing CSS */
 #description {
-    width: 50%; /* Set the width as needed */
-    height: 100px; /* Set the height as needed */
+    width: 80%; /* Set the width as needed */
+    height: 80px; /* Set the height as needed */
     resize: vertical; /* Allow vertical resizing */
 }
 
