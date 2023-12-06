@@ -14,6 +14,7 @@
   <script src="/js/location.js"></script>
   <script src="/js/header.js"></script>
   <script src="/js/footer.js"></script>
+  <script src="/js/payment.js"></script>
 
 </head>
 <body>
@@ -75,6 +76,22 @@
       <button class="next-button" type="submit" onclick="submitForm()">Videre</button>
     </div>
 </form>
+</div>
+
+
+<p id="price"></p>
+
+<h1>Vælg en prispakke</h1>
+
+<button onclick="showPrice('prispakke1', 5000)">Prispakke 1 - 5000kr</button>
+<button onclick="showPrice('prispakke2', 6500)">Prispakke 2 - 6500kr</button>
+<button onclick="showPrice('prispakke3', 12500)">Prispakke 3 - 12.500kr</button>
+
+<!-- Price popup -->
+<div id="pricePopup">
+  <button> close</button>
+  <p id="priceValue"></p>
+
 </div>
 
 </body>

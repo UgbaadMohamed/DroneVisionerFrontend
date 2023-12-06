@@ -34,47 +34,12 @@ body {
 
 hr.solid {
     border-top: 3px solid rgba(166, 161, 161, 0.83);
-    width: 1370px;#title {
-    margin-top: 40px;
-    font-family: Verdana sans-serif;
-    margin-left: 50px;
-}
-
-    #picture {
-        width: 450px;
-        height: 300px;
-        margin-top: 50px;
-        border: 1px solid #ebf1f6; /* Add a border around the picture */
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a transparent shadow effect */
-        margin-left: 50px;
-    }
-
-    body {
-        background-color: #7a7a82!important;
-        margin-top: 20%;
-
-    }
-
-    #box {
-        margin-left: 40%;
-        margin-bottom: 20px;
-        padding: 15px; /* Add padding for spacing within the box */
-        width: 590px;
-        margin-top: -340px;
-
-    }
-
-    #box p {
-        margin: 30px; /* Remove default paragraph margin */
-    }
-
-    hr.solid {
-        border-top: 3px solid rgba(166, 161, 161, 0.83);
-        width: 1370px;
-        margin-left: 50px;
-        margin-top: 50px;
-    }
-
+    width: 1370px;
     margin-left: 50px;
     margin-top: 50px;
+}
+
+#video{
+    margin-left: 37%;
+
 }
