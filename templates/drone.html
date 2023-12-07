@@ -1,137 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Drone</title>
-  <!-- Bootstrap CSS -->
+
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
 
   <script src="/js/header.js"></script>
   <link rel="stylesheet" href="../drone.css">
   <script src="/js/footer.js"></script>
 
+
+  <style>
+    /* Add your custom styles here */
+
+
+    body {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 25px;
+      color: #3b4045;
+      font-family: "Josefin Sans", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+
+    .scroll-container {
+      padding: 20px; /* Add padding around the videos */
+    }
+
+
+    video {
+      width: 100%; /* Make videos responsive */
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px; /* Reduce the margin between videos */
+    }
+
+
+    .bg-green {
+      background-color: #4caf50;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+
+    .video-container {
+      position: relative;
+    }
+  </style>
 </head>
 <body>
 <div style="margin-bottom: 3rem" id="header-placeholder"></div>
 
-<div class="scroll-container">
-
-    <h1 style="color: #829d65">Drone</h1>
-    <p>Se mit arbejde og book nu!</p>
 
 
-  <div class="row">
-    <div class="col-md-6 mb-3">
-      <video width="78%" height="auto" loop autoplay muted playbackRate="0.5">
-        <source src="../videos/dji_export_20230916_125501_1694861687387_mastershots_cache.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+
+
+
+<h1 style="color: #829d65">Drone</h1>
+<p class="col-md-15 text-center mb-5 mb-md-0">Se mit arbejde og book nu!</p>
+
+
+<section class="your-custom-section section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-center mb-5 mb-md-0">
+        <div class="video-container position-relative">
+          <video width="100%" height="auto" loop autoplay muted>
+            <source src="../droner/dji_fly_20230916_123240_33_1694861432385_quickshot.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+
+      <div class="col-md-6 align-self-center text-center text-md-left">
+        <div class="content text-green">
+          <h2 class="subheading font-weight-bold mb-10">Book Dronen til Dine Unikke Øjeblikke</h2>
+          <p>  <br> Gør dine specielle øjeblikke uforglemmelige ved at booke vores droner.
+            <br><br>  Med vores nemme bookingtjeneste kan du sikre, at du har den perfekte drone video til at fange og dokumentere dine begivenheder.
+            <br><br>    Fra Øjeblikket til events - book nu og løft dine begivenheder til nye højder!</p>
+          <div class="box">
+            <!-- Book Now Button with Hidden Values -->
+            <button type="button" class="btn btn-custom btn-lg" onclick="submitForm()">Book Nu</button>
+            <!-- Hidden Practical Information -->
+            <input type="hidden" id="visualMediaType" name="visualMediaType" value="Drone">
+            <input type="hidden" id="brand" name="brand" value="Canon">
+            <input type="hidden" id="version" name="version" value="EOS 5D Mark IV">
+            <input type="hidden" id="captureDeviceId" name="captureDeviceId">
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="your-custom-section section">
+  <div class="container" style="margin-top: -100px!important;">
+    <div class="row">
+      <div class="col-md-6 align-self-center text-center text-md-right">
+        <div class="content text-green">
+          <h2 class="subheading font-weight-bold mb-10">Droneteknologi</h2>
+          <p>
+            <br> Hæv dine forventninger med vores næste niveau droneteknologi. Elegant design møder innovativ teknologi og giver en problemfri flyveoplevelse.
+            <br><br>  Med funktioner som automatiserede flyvetilstande, HD live streaming og langtrækkende evner omdefinerer vores droner standarderne for ydeevne.
+            <br><br> Bliv en del af fremtidens luftfart, hvor teknologi og eventyr mødes!
+          </p>
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="col-md-6 text-center mb-5 mb-md-0">
+        <div class="video-container position-relative">
+          <video width="78%" height="auto" loop autoplay muted playbackRate="0.5">
+            <source src="../droner/DJI_0037.MP4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="bg-green">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-center mb-5 mb-lg-0">
+        <video width="88%" height="auto"  loop autoplay muted>
+          <source src="../droner/como drone.mov" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="col-md-6 align-self-center text-center text-md-left">
+        <div class="content">
+          <h2 class="subheading text-white font-weight-bold mb-10">Skab Magi med Bookede Flyvninger</h2>
+          <p class="text-white">
+
+
+            <br><br> Droneflyvning åbner døren til en verden af spændende muligheder, hvor luften bliver din legeplads.
+            <br><br>
+            Droner er ubemandede luftfartøjer, også kendt som UAV'er (Unmanned Aerial Vehicles). De kan styres manuelt eller autonomt og anvendes i en bred vifte af formål, herunder fotografi, videoproduktion, inspektion, redningstjenester og rekreativ flyvning.  </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="feature-list section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="heading">
+          <h2>Hvorfor Drone videoer?</h2>
+          <br>
+        </div>
+      </div>
     </div>
 
-    <div class="col-md-6 mb-3">
+
+    <div class="row mb-40">
+      <div class="col-md-6 text-center mb-5 mb-lg-0">
+        <video width="78%" height="auto"  loop autoplay muted>
+          <source src="../droner/dji_export_20230916_132710_1694863630485_mastershots_cache.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="col-md-6 align-self-center text-center text-md-left">
+        <div class="content">
+          <h4 class="subheading">Professionelle Dronebookinger til Alle Lejligheder:</h4>
+          <p>
+            <br> Gør din arbejdsplads, restaurant eller kreative event mindeværdig med vores specialiserede dronefotografi.
+            <br><br>Vi tilbyder skræddersyede dronebookinger til at fange det unikke og det spektakulære. Skab imponerende visuelle indtryk af din virksomhed, fang unikke gastronomiske øjeblikke eller dokumenter kreative events fra luften.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row mb-40">
+      <div class="col-md-6 order-md-1 order-2 align-self-center text-center text-md-left">
+        <div class="content">
+          <h4 class="subheading">Se i verden for oven!</h4>
+          <p>
+            <br>✔️   Uforglemmelig Oplevelse
+            <br>✔️  Professionel Dronefotografi
+            <br> ✔️  Alt set før – aldrig set så godt!
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 order-md-1 order-2 align-self-center text-center text-md-left">
+        <div class="box">
+          <!-- Book Now Button with Hidden Values -->
+          <button type="button" class="btn btn-custom btn-lg" onclick="submitForm()">Book I DAG</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-10 order-md-6 order-3 text-center mb-5 mb-lg-6 offset-md-1">
+
+
       <video width="78%" height="auto" loop autoplay muted>
-        <source src="../videos/dji_export_20230916_112938_1694856558165_mastershots_cache.mp4" type="video/mp4">
+        <source src="../droner/kysten.mov" type="video/mp4">
         Your browser does not support the video tag.
       </video>
+
+
     </div>
   </div>
-
-<div class="row">
-
-  <div class="col-md-6 mb-3">
-    <video width="78%" height="auto"  loop autoplay muted>
-      <source src="../videos/dji_fly_20230916_123240_33_1694861432385_quickshot.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-
-  <div class="col-md-5 mb-4">
-    <div class="info-box">
-      <p>Forbedr dit visuelle indhold med vores topmoderne drone - <span id="brandInfo">DJI</span> <span id="versionInfo">Mini 3 Pro</span>.</p>
-
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <label for="visualMediaType" class="form-label">Type af visuelt medie:</label>
-        </div>
-        <div class="col-md-3">
-          <input type="text" id="visualMediaType" name="visualMediaType" value="Drone" class="form-control" readonly>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <label for="brand" class="form-label">Mærke på optageenhed:</label>
-        </div>
-        <div class="col-md-3">
-          <input type="text" id="brand" name="brand" value="DJI" class="form-control" readonly>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <label for="version" class="form-label">Version:</label>
-        </div>
-        <div class="col-md-3">
-          <input type="text" id="version" name="version" value="Mini 3 Pro" class="form-control" readonly>
-        </div>
-      </div>
-
-      <!-- Book Now Button -->
-      <button type="button" class="btn btn-primary btn-lg" onclick="submitForm()">Book Nu</button>
-    </div>
-  </div>
-</div>
-  <div class="row">
-
-    <div class="col-md-6 mb-3">
-      <video width="78%" height="auto" controls>
-        <source src="your_third_video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-
-    <div class="col-md-6 mb-3">
-      <video width="78%" height="auto" controls>
-        <source src="your_fourth_video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
-
-  <div class="row">
-
-    <div class="col-md-6 mb-3">
-      <video width="78%" height="auto" controls>
-        <source src="your_third_video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-
-    <div class="col-md-6 mb-3">
-      <video width="78%" height="auto" controls>
-        <source src="your_fourth_video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
+</section>
 
 
 
-</div>
+
+
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-e0Dz6Ffh8IqJxljAVNSCAIXYOWg3lOd7DFIvo3ouRJk4A2r4JY1i7K76IGbQPOGq"
-        crossorigin="anonymous"></script>
+        integrity="sha384-e0Dz6Ffh8IqJxljAVNSCAIXYOWg3lOd7DFIvo3ouRJk4A2r4JY1i7K76IGbQPOGq" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="correct-integrity-value" crossorigin="anonymous"></script>
-
 
 
 <script src="capturedevice.js"></script>
 </body>
 
+
 </html>
-<br><br><br><br><br><br><br>
 <div id="footer-placeholder"></div>

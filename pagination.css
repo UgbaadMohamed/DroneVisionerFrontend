@@ -1,0 +1,66 @@
+.container {
+    text-align: center;
+    background-color: transparent !important;
+
+}
+
+th, td {
+    padding: 20px;
+    text-align: left;
+    border-bottom: 1px solid #ddd !important ;
+}
+
+
+.table {
+    background-color: transparent !important;
+    margin-top: 100px !important;
+    border-bottom: 1px solid rgba(29, 78, 0, 0.07); /* Add a bottom border to separate rows */
+}
+
+.table, .table th, .table td {
+    background-color: transparent !important;
+    padding: 30px;
+}
+
+/* Optionally, you can add additional styling for th and td if needed */
+.table th, .table td {
+
+    border: 1px solid transparent;
+    padding: 20px;
+    text-align: left;
+}
+
+/* Add any other styles specific to your table if needed */
+
+
+th.clicked {
+    background-color: #015e05;
+}
+
+
+.pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+.pagination li {
+    margin: 0 5px;
+}
+
+
+.pagination a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: #015e05; /* Green color */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.pagination a:hover {
+    background-color: #f2f2f2;
+}
+

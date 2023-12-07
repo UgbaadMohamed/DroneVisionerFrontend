@@ -57,74 +57,41 @@ document.getElementById('bookingForm').addEventListener('submit', function (even
             });
     });*/
 
-
-    var dayDropdown = document.getElementById("birthday");
-    for (var i = 1; i <= 31; i++) {
-        var option = document.createElement("option");
-        option.text = i < 10 ? "0" + i : "" + i;
-        option.value = i < 10 ? "0" + i : "" + i;
-        dayDropdown.add(option);
+document.getElementById('bookingForm').addEventListener('submit', function (event) {
+    if (!validateForm()) {
+        event.preventDefault();
     }
+});
 
+var dayDropdown = document.getElementById("birthday");
+for (var i = 1; i <= 31; i++) {
+    var option = document.createElement("option");
+    option.text = i < 10 ? "0" + i : "" + i;
+    option.value = i < 10 ? "0" + i : "" + i;
+    dayDropdown.add(option);
+}
 
-    var monthDropdown = document.getElementById("birthmonth");
-    for (var i = 1; i <= 12; i++) {
-        var option = document.createElement("option");
-        option.text = i < 10 ? "0" + i : "" + i;
-        option.value = i < 10 ? "0" + i : "" + i;
-        monthDropdown.add(option);
-    }
+var monthDropdown = document.getElementById("birthmonth");
+for (var i = 1; i <= 12; i++) {
+    var option = document.createElement("option");
+    option.text = i < 10 ? "0" + i : "" + i;
+    option.value = i < 10 ? "0" + i : "" + i;
+    monthDropdown.add(option);
+}
 
+var yearDropdown = document.getElementById("birthyear");
+var currentYear = new Date().getFullYear();
+var minBirthYear = currentYear - 18;
 
-    var yearDropdown = document.getElementById("birthyear");
-    var currentYear = new Date().getFullYear();
-    for (var i = currentYear; i >= currentYear - 100; i--) {
-        var option = document.createElement("option");
-        option.text = "" + i;
-        option.value = "" + i;
-        yearDropdown.add(option);
-    }
+// Set the 'min' attribute for the year input to the calculated minimum birth year
+yearDropdown.setAttribute("min", minBirthYear);
 
-    document.getElementById('bookingForm').addEventListener('submit', function (event) {
-        if (!validateForm()) {
-            event.preventDefault();
-        }
-    });
-
-
-
-
-
-    function validateForm() {
-        var birthday = document.getElementById("birthday").value;
-        var birthmonth = document.getElementById("birthmonth").value;
-        var birthyear = document.getElementById("birthyear").value;
-        var selectedDate = new Date(birthyear + '-' + birthmonth + '-' + birthday);
-        var age = calculateAge(selectedDate);
-
-        // Check if the person is at least 18 years old
-        if (age < 18) {
-            alert("Du skal være mindst 18 for at foretage bookingen.");
-            return false;
-        }
-
-        return true;
-    }
-
-    function calculateAge(birthDate) {
-        var today = new Date();
-        var age = today.getFullYear() - birthDate.getFullYear();
-        var monthDiff = today.getMonth() - birthDate.getMonth();
-
-        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
-
-        return age;
-    }
-
-
-
+for (var i = currentYear - 18; i >= currentYear - 100; i--) {
+    var option = document.createElement("option");
+    option.text = "" + i;
+    option.value = "" + i;
+    yearDropdown.add(option);
+}
 
 
 

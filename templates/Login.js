@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Check if the entered credentials match the hardcoded ones
     if (enteredUsername === "admin520" && enteredPassword === "12345678") {
     // Redirect to frontPageInternal.html for successful login
-    window.location.href = "frontPageInternal.html";
+    window.location.href = "../intern-sys/frontPageInternal.html";
+        sessionStorage.setItem("authenticated", "true");
 } else {
     // Display an error message for unsuccessful login
     alert("forkert brugernavn eller adgangskode!.");

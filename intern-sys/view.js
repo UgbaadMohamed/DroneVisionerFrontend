@@ -1,5 +1,5 @@
 const API_ENDPOINT = 'http://localhost:8085/appointment/getAllAppointments';
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 10;
 let sortColumn = 'date';
 const tblRows = document.getElementById('tbl-rows');
 let sortDirection = 'asc';
@@ -38,7 +38,7 @@ async function fetchData(page = currentPage, size = PAGE_SIZE, sort = `${sortCol
 }
 
 function displayData(appointments) {
-    tblRows.innerHTML = appointments.map(appointment => `<tr><td>${appointment.customer.first_Name}</td><td>${appointment.description}</td><td>${appointment.date}</td><td>${appointment.time}</td><td>${appointment.payment}</td></tr>`).join('');
+    tblRows.innerHTML = appointments.map(appointment => `<tr><td>${appointment.customer.first_Name}</td><td>${appointment.description}</td><td>${appointment.date}</td><td>${appointment.time}</td><td></td></tr>`).join('');
 }
 
 function displayPagination(totalPages, currentPage) {
@@ -70,5 +70,21 @@ function displayPagination(totalPages, currentPage) {
         }
     };
 }
+
+
+// ... (your existing code)
+
+
+
+// ... (rest of your existing code)
+
+
+// ... (rest of your existing code)
+
+
+// ... (rest of your existing code)
+
+// ... (rest of your existing code)
+
 
 fetchData(); // Initial call to the backend
