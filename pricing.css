@@ -51,6 +51,14 @@ body {
     transition: color 0.3s; /* Tilføj overgang for farveskift ved hover */
 }
 
+.pricing-card button.btn-link {
+    text-decoration: none;
+}
+
+.pricing-card button.btn-link:hover {
+    text-decoration: none;
+}
+
 .label {
     background-color: #6c757d;
     color: #fff;
@@ -67,3 +75,20 @@ body {
     color: #fff;
 }
 
+#fixed-background {
+    position: fixed;
+    top: 70%;
+    margin-right: 150px;
+    margin-left: 50px;
+    width: 90%;
+    height: 30%;
+    background-color: #6c757d;
+    z-index: -1;
+}
+
+#content-container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
