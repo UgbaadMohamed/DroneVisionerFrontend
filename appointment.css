@@ -8,7 +8,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-
 .heading{
     margin-top: 50px;
     margin-bottom: 50px;
@@ -67,23 +66,34 @@
     font-weight: 500;
 }
 
-/* Add this style for booked dates
-.booked {
-    color: red;
-    pointer-events: none; /* This disables the click event on booked dates
-}*/
 
-/* Add this to your CSS file
-.booked {
-    background-color: red; /* or any other styling to make it red
-    color: white; /* or any other styling for text color
-}*/
 
-/* Add this to your CSS file or style tag */
-li.booked {
-    background-color: red; /* Change this to the desired color for booked dates */
-    color: white; /* Change this to the desired text color for booked dates */
+/* Style for booked dates */
+.booked .date-number {
+    /*background-color: red; /* Set the color to red for booked dates */
+    color: white; /* White text color */
+
 }
+
+/* Style for booked dates */
+.booked {
+
+
+}
+
+
+li.booked::before{
+    width: 40px;
+    background-color: #f55353; /* Set the color to red for booked dates */
+    color: white; /* White text color */
+
+    border: none; /* Remove border */
+    border-radius: 50% !important; /* Add a border-radius for a perfect circle */
+    text-align: center; /* Center the text horizontally */
+
+    cursor: pointer;
+}
+
 
 
 
@@ -120,7 +130,7 @@ li.booked {
 .days li.inactive{
     color: #aaa;
 }
-.days li.active{
+.days li.chosen{
     color: #fff;
 }
 .days li::before{
@@ -134,15 +144,15 @@ li.booked {
     border-radius: 50%;
     transform: translate(-50%, -50%);
 }
-.days li.active::before{
+.days li.chosen::before{
     background: #829d65;
 }
-.days li:not(.active):hover::before{
+.days li:not(.chosen):hover::before{
     background: #f2f2f2;
 }
 
 #date {
-    background-color: #a2a2a2; /* Green background color */
+    background-color: #829d65; /* Green background color */
     color: white; /* White text color */
     padding: 5px 8px; /* Padding to give some space around the text */
     font-size: 16px; /* Font size */

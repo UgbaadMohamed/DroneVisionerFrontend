@@ -7,11 +7,13 @@ function generateTimeOptions() {
     var endTime = 21;   // Ending hour
     var timeOptions = [];
 
+
     for (var hour = startTime; hour <= endTime; hour++) {
         // Add options with 30-minute intervals
         timeOptions.push(hour + ":00");
         timeOptions.push(hour + ":30");
     }
+
 
     return timeOptions;
 }
@@ -20,7 +22,9 @@ function generateTimeOptions() {
 function populateDropdown() {
     var timeOptions = generateTimeOptions();
 
+
     var dropdown = document.getElementById("timeDropdown");
+
 
     timeOptions.forEach(function (time) {
         var option = document.createElement("a");
@@ -29,12 +33,15 @@ function populateDropdown() {
     });
 }
 
+
 //TIME DROPDOWN --------------------------------------------------------------------------------------------
+
 
 function showTimeDropdown() {
     var dropdown = document.getElementById("timeDropdown");
     dropdown.classList.toggle("show");
 }
+
 
 //Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
@@ -50,38 +57,30 @@ window.onclick = function(event) {
     }
 }
 
-//DOM CONTENT LOADED --------------------------------------------------------------------------------------------
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Retrieve the captureDeviceId from the URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const captureDeviceId = urlParams.get('captureDeviceId');
-    document.getElementById('captureDeviceId').value = captureDeviceId;
-
-    populateDropdown();
-    handleClickTime();
-    postAppointmentToDatabase();
-});
 
 
 
 //CALENDER --------------------------------------------------------------------------------------------
 
+
 var clickedDay;
 let isCalendarVisible = false; // Variable to track the visibility of the calendar
 let calendarContainer = document.getElementById('calendarContainer');
+
 
 // getting new date, current year and month
 let date = new Date(),
     currYear = date.getFullYear(),
     currMonth = date.getMonth();
 
+
 function removeCalendarElements(){
     calendarContainer.innerHTML = '';
     isCalendarVisible = false; // Reset the visibility state
 }
 
-function showCalendar() {
+
+async function showCalendar() {
 // Adjust elements below the calendar
     const elementsBelowCalendarContainer = document.getElementById('elementsBelowCalendarContainer');
 
@@ -94,7 +93,6 @@ function showCalendar() {
         // Calendar is visible, so remove the calendar elements
         removeCalendarElements()
     } else {
-        //fetchBookedDates()
         // Create the calendar container dynamically
         calendarContainer = document.getElementById('calendarContainer');
 
@@ -154,11 +152,9 @@ function showCalendar() {
 
         const prevNextIcon = [prevIcon, nextIcon];
 
-
 // storing full name of all months in array
         const months = ["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli",
             "August", "September", "Oktober", "November", "December"];
-
 
         //Check if the days of the week have already been inserted
         const weeksTag = document.querySelector(".weeks");
@@ -168,30 +164,39 @@ function showCalendar() {
             weeksTag.innerHTML = daysOfWeek.map(day => `<li>${day}</li>`).join('');
         }
 
+        const response = await fetch(`${url}/booked-dates`);
+        const bookedDates = await response.json();
+
         const renderCalendar = () => {
-            let firstDayofMonth = new Date(currYear, currMonth, 0).getDay(), // getting first day of month /0 i stedet for 1
-                lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), // getting last date of month
-                lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay() - 1, // getting last day of month /tilføjede -1
-                lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
+            let firstDayofMonth = new Date(currYear, currMonth, 0).getDay(),
+                lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(),
+                lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay() - 1,
+                lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate();
             let liTag = "";
 
-            for (let i = firstDayofMonth; i > 0; i--) { // creating li of previous month last days
+            for (let i = firstDayofMonth; i > 0; i--) {
                 liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
             }
 
-            for (let i = 1; i <= lastDateofMonth; i++) { // creating li of all days of current month
-                // adding active class to li if the current day, month, and year matched
+            for (let i = 1; i <= lastDateofMonth; i++) {
+                const isBooked = bookedDates.includes(
+                    new Date(currYear, currMonth, i).toISOString().split('T')[0]);
+
                 let isToday = i === date.getDate() && currMonth === new Date().getMonth()
-                && currYear === new Date().getFullYear() ? "active" : "";
-                liTag += `<li class="${isToday}">${i}</li>`;
+                && currYear === new Date().getFullYear() ? "chosen" : "";
+                let bookedClass = isBooked ? "booked" : "";
+                liTag += `<li class="${isToday} ${bookedClass}"><span class="date-number">${i}</span></li>`;
             }
 
-            for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
-                liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
+
+            for (let i = lastDayofMonth; i < 6; i++) {
+                liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
             }
-            currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
+
+            currentDate.innerText = `${months[currMonth]} ${currYear}`;
             daysTag.innerHTML = liTag;
-        }
+        };
+
 
         renderCalendar();
 
@@ -230,10 +235,10 @@ function handleClickDay() {
             clickedDay = event.target;
 
             daysTag.querySelectorAll('li').forEach(function (day) {
-                day.classList.remove('active');
+                day.classList.remove('chosen');
             });
 
-            clickedDay.classList.add('active');
+            clickedDay.classList.add('chosen');
 
             // Set the selected date in the hidden input field
             var selectedDate =
@@ -251,12 +256,14 @@ function handleClickDay() {
 function handleClickTime() {
     const timeDropdown = document.getElementById('timeDropdown');
 
+
     if (timeDropdown) {
         timeDropdown.addEventListener('click', function (event) {
             if (event.target.tagName === 'A') {
                 const selectedTime = event.target.textContent.trim();
                 document.getElementById('selectedTime').value = selectedTime;
                 document.getElementById('select-time-btn').innerText = selectedTime;
+
 
                 // Toggle the "show" class to control visibility
                 timeDropdown.classList.toggle('show');
@@ -265,42 +272,55 @@ function handleClickTime() {
     }
 }
 
-//FETCH BOOKED DATES-----------------------------------------------------------------------------------------
 
-function fetchBookedDates() {
-    fetch(`${url}/booked-dates`)
-        .then(response => response.json())
-        .then(data => {
-            // Assuming the response is an array of LocalDate strings
-            bookedDates = data;
-        })
-        .catch(error => console.error('Error fetching booked dates:', error));
-}
+//GET CAPTURE DEVICE ID--------------------------------------------------------------------------------------------
+
+/*async function getCaptureDeviceById(captureDeviceId) {
+    const response = await fetch(`http://localhost:8085/captureDevice/${captureDeviceId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (response.ok) {
+        const captureDeviceData = await response.json();
+        return captureDeviceData;
+    } else {
+        console.error('Error fetching CaptureDevice');
+        return null;
+    }
+}*/
 
 
 //POST APPOINTMENT TO DATABASE-----------------------------------------------------------------------------------------
 
-function postAppointmentToDatabase() {
+async function postAppointmentToDatabase() {
     const form = document.getElementById('appointmentForm');
-
 
     if (form) {
         form.onsubmit = async function (event) {
             event.preventDefault(); // Prevent default form submission
 
+            // Validate each field before proceeding
+            const location = document.getElementById("location").value;
+            const description = document.getElementById("description").value;
+            const selectedDate = document.getElementById("selectedDate").value;
+            const selectedTime = document.getElementById("selectedTime").value;
+            //const captureDeviceId = document.getElementById("captureDeviceId").value;
+
+            // Fetch the complete CaptureDevice object
+            //const captureDevice = await getCaptureDeviceById(captureDeviceId);
 
             const formData = {
-                location: document.getElementById("location").value,
-                description: document.getElementById("description").value,
-                date: document.getElementById("selectedDate").value, //date
-                time: document.getElementById("selectedTime").value,
-                captureDevice: {
-                    capture_deviceid_fk: document.getElementById("captureDeviceId").value
-                }
-            }
+                location: location,
+                description: description,
+                date: selectedDate,
+                time: selectedTime
+                //captureDevice: captureDevice,
+            };
 
             console.log("Form Data:", formData);
-
 
             try {
                 const response = await fetch(url, {
@@ -311,15 +331,14 @@ function postAppointmentToDatabase() {
                     },
                 });
 
-
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
 
-
                 const data = await response.json();
                 console.log('Success:', data);
 
+                window.location.href = `/templates/customer.html?appointmentId=${data.appointmentId}`;
 
                 // Uncomment the line below if you want to redirect after successful submission
                 // window.location.href = "/header.html";
@@ -330,16 +349,48 @@ function postAppointmentToDatabase() {
     } else {
         console.error('Form with ID "appointmentForm" not found');
     }
-
-
 }
 
-    function submitForm() {
-    window.location.href = '../templates/customer.html';
+
+//DOM CONTENT LOADED --------------------------------------------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', async function () {
+    // Retrieve the captureDeviceId from the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const captureDeviceId = urlParams.get('captureDeviceId');
+    document.getElementById('captureDeviceId').value = captureDeviceId;
+
+    /*const captureDeviceData = await getCaptureDeviceById(captureDeviceId);
+
+    if (captureDeviceData) {*/
+        // Include other properties from captureDeviceData if needed
+        populateDropdown();
+        handleClickTime();
+        postAppointmentToDatabase();
+    /*} else {
+        console.error('CaptureDevice data not found');
+    }*/
+});
+
+//----
+async function getBookedDates() {
+    try {
+        const response = await fetch(`${url}/booked-dates`);
+
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+
+        const bookedDates = await response.json();
+
+        // Handle the bookedDates as needed
+        console.log('Booked Dates:', bookedDates);
+
+        return bookedDates;
+    } catch (error) {
+        console.error('Error fetching booked dates:', error.message);
+        // Handle the error as needed
     }
-
-
-
-
+}
 
 
