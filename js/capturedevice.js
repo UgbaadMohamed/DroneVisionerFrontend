@@ -1,6 +1,10 @@
-
-
 // Use fetch to get the header content and insert it into the placeholder
+
+
+
+
+
+
 
 async function submitForm() {
     const brand = document.getElementById('brand').value;
@@ -58,6 +62,7 @@ async function submitForm() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+
             },
             body: JSON.stringify({
                 brand: brand,
@@ -76,7 +81,7 @@ async function submitForm() {
             //console.log('Capture Device ID:', captureDeviceId);
 
 
-       window.location.href = `appointment.html?captureDeviceId=${captureDeviceId}`;
+       window.location.href = `../test.html?captureDeviceId=${captureDeviceId}`;
 
     } else {
         console.error('Error fetching existing visual media type');

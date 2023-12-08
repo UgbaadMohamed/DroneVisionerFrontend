@@ -22,8 +22,6 @@
   <link rel="stylesheet" href="../appointment.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-
 </head>
 <body>
 
@@ -45,9 +43,11 @@
                 <br> <br> <br>
 
                 <form id="appointmentForm" class="body" method="POST">
-                  <label class="date keep-position">Dato </label>
-                  <div class="input-section">
 
+
+                  <label class="date keep-position">Dato:</label>
+
+                  <div class="input-section">
 
                     <button onclick="showCalendar()" id="choose-date-btn">
                       Vælg dato
@@ -61,7 +61,7 @@
 
                   <div id="elementsBelowCalendarContainer">
                     <div id="map"></div>  <!--??-->
-                    <label>Tidspunkt</label>
+                    <label>Tidspunkt:</label>
                     <div class="input-section">
 
                       <div class="dropdown">
@@ -75,14 +75,14 @@
                       </div>
                     </div>
 
-                    <label class="enter-address">Adresse</label>
+                    <label class="enter-address">Adresse:</label>
                     <div class="input-section">
                       <input type="text" id="location" placeholder="Indtast adresse" oninput="suggestAddress()">
                       <div id="suggestionsContainer"></div>
                     </div>
 
                     <div id="elementsBelowAddressContainer">
-                      <label for="description">Begivenhedsdetaljer</label>
+                      <label for="description">Begivenhedsdetaljer:</label>
                       <div class="input-section">
 
                         <textarea name="description" id="description" placeholder="Skriv en kort beskrivelse (max 500 tegn)" maxlength="500"
@@ -160,11 +160,6 @@
     </div>
   </div>
 </section>
-
-
-
-
-<!-- Add your closing tags and any additional content here -->
 
 </body>
 </html>

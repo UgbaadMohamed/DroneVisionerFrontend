@@ -1,3 +1,5 @@
+const url = 'http://localhost:8085/appointment';
+
 //LOOP TIL TIME --------------------------------------------------------------------------------------------
 
 function generateTimeOptions() {
@@ -48,14 +50,7 @@ window.onclick = function(event) {
     }
 }
 
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-}
-
 //DOM CONTENT LOADED --------------------------------------------------------------------------------------------
-
 
 document.addEventListener('DOMContentLoaded', function () {
     // Retrieve the captureDeviceId from the URL parameters
@@ -99,18 +94,18 @@ function showCalendar() {
         // Calendar is visible, so remove the calendar elements
         removeCalendarElements()
     } else {
+        //fetchBookedDates()
         // Create the calendar container dynamically
         calendarContainer = document.getElementById('calendarContainer');
 
-        // Calculate the position of the calendar relative to the "Vælg dato" button
-        const dropdownButton = document.getElementById('choose-date-btn');
-        const dropdownRect = dropdownButton.getBoundingClientRect();
-        const calendarHeight = calendarContainer.offsetHeight;
+// Calculate the position of the button???????????
+        const chooseDateBtn = document.getElementById('choose-date-btn');
+        const buttonPosition = chooseDateBtn.getBoundingClientRect();
 
-        // Set the position of the calendar to be below the "Vælg dato" button
+        // Set the position of the calendar container??????
         calendarContainer.style.position = 'absolute';
-        calendarContainer.style.left = `${dropdownRect.left}px`;
-        calendarContainer.style.top = `${dropdownRect.bottom}px`;
+        calendarContainer.style.left = `${buttonPosition.left}px`;
+        calendarContainer.style.top = `${buttonPosition.bottom}px`;
 
         const currentDate = document.createElement('p');
         currentDate.classList.add('current-date');
@@ -251,7 +246,6 @@ function handleClickDay() {
 }
 
 
-//TODO:TIME!!!!!!!!!!!!!! //kalde dom content en gang og så kalde de forskelle funktioner
 //WHEN TIMESTAMP CLICKED--------------------------------------------------------------------------------------------
 
 function handleClickTime() {
@@ -271,6 +265,17 @@ function handleClickTime() {
     }
 }
 
+//FETCH BOOKED DATES-----------------------------------------------------------------------------------------
+
+function fetchBookedDates() {
+    fetch(`${url}/booked-dates`)
+        .then(response => response.json())
+        .then(data => {
+            // Assuming the response is an array of LocalDate strings
+            bookedDates = data;
+        })
+        .catch(error => console.error('Error fetching booked dates:', error));
+}
 
 
 //POST APPOINTMENT TO DATABASE-----------------------------------------------------------------------------------------
@@ -298,7 +303,7 @@ function postAppointmentToDatabase() {
 
 
             try {
-                const response = await fetch('http://localhost:8085/appointment', {
+                const response = await fetch(url, {
                     method: 'POST',
                     body: JSON.stringify(formData),
                     headers: {
@@ -328,7 +333,6 @@ function postAppointmentToDatabase() {
 
 
 }
-
 
     function submitForm() {
     window.location.href = '../templates/customer.html';

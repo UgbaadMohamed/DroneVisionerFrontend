@@ -35,6 +35,12 @@
     justify-content: space-between;
 }
 
+#calendarContainer {
+    position: absolute !important;
+    left: unset !important;
+    top: 160px !important;
+}
+
 .icons{
     display: flex;
 }
@@ -60,6 +66,27 @@
     font-size: 1.30rem;
     font-weight: 500;
 }
+
+/* Add this style for booked dates
+.booked {
+    color: red;
+    pointer-events: none; /* This disables the click event on booked dates
+}*/
+
+/* Add this to your CSS file
+.booked {
+    background-color: red; /* or any other styling to make it red
+    color: white; /* or any other styling for text color
+}*/
+
+/* Add this to your CSS file or style tag */
+li.booked {
+    background-color: red; /* Change this to the desired color for booked dates */
+    color: white; /* Change this to the desired text color for booked dates */
+}
+
+
+
 .calendar{
     padding: 10px;
 }
