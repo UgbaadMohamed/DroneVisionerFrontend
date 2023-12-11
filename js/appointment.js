@@ -7,58 +7,98 @@ function generateTimeOptions() {
     var endTime = 21;   // Ending hour
     var timeOptions = [];
 
-
     for (var hour = startTime; hour <= endTime; hour++) {
         // Add options with 30-minute intervals
         timeOptions.push(hour + ":00");
         timeOptions.push(hour + ":30");
     }
 
-
     return timeOptions;
 }
 
-//
-function populateDropdown() {
+function createDropdown() {
     var timeOptions = generateTimeOptions();
+    var dropdownContainer = document.getElementById("timeDropdown");
 
-
-    var dropdown = document.getElementById("timeDropdown");
-
+    // Clear existing options
+    dropdownContainer.innerHTML = "";
 
     timeOptions.forEach(function (time) {
         var option = document.createElement("a");
         option.textContent = time;
-        dropdown.appendChild(option);
+        option.addEventListener("click", function () {
+            handleClickTime();
+            console.log("Selected time:", time);
+            // Optionally, close the dropdown after selection
+            dropdownContainer.classList.remove('show'); //??
+        });
+        dropdownContainer.appendChild(option);
     });
 }
 
-
-//TIME DROPDOWN --------------------------------------------------------------------------------------------
-
-
 function showTimeDropdown() {
-    var dropdown = document.getElementById("timeDropdown");
-    dropdown.classList.toggle("show");
+    var dropdownContainer = document.getElementById("timeDropdown");
+
+    // Explicitly add the 'show' class to display the dropdown
+    dropdownContainer.classList.add("show");
+
+    // Generate options only when the dropdown is shown
+    createDropdown();
+
+    // Adjust the position of elements below the dropdown
+    var elementsToMove = document.querySelectorAll('.elements-to-move');
+    elementsToMove.forEach(function (element) {
+        element.style.marginTop = '30px'; // Adjust the margin to match the dropdown height
+    });
 }
 
+//den klikker også når tid er valgt 2. gang
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function (event) {
+    var dropdownButton = document.getElementById("select-time-btn");
+    var dropdownContainer = document.getElementById("timeDropdown");
 
-//Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
+
+    // Check if the click is outside of both the button and the dropdown content
+    if (
+        !event.target.matches('.combined-btn-time') &&
+        !event.target.closest('.dropdown') &&
+        !event.target.matches('.dropdown-content a')
+    ) {
+        // Hide the dropdown if it is shown
+        if (dropdownContainer && dropdownContainer.classList.contains("show")) {
+            dropdownContainer.classList.remove('show');
+
+            // Reset the position of elements below the dropdown
+            var elementsToMove = document.querySelectorAll('.elements-to-move');
+            elementsToMove.forEach(function (element) {
+                element.style.marginTop = '0';
+            });
         }
     }
+};
+
+
+//WHEN TIMESTAMP CLICKED--------------------------------------------------------------------------------------------
+
+function handleClickTime() {
+    const timeDropdown = document.getElementById('timeDropdown');
+
+
+    if (timeDropdown) {
+        timeDropdown.addEventListener('click', function (event) {
+            if (event.target.tagName === 'A') {
+                const selectedTime = event.target.textContent.trim();
+                document.getElementById('selectedTime').value = selectedTime;
+                document.getElementById('select-time-btn').innerText = selectedTime;
+
+
+                // Toggle the "show" class to control visibility
+                timeDropdown.classList.toggle('show');
+            }
+        });
+    }
 }
-
-
-
 
 //CALENDER --------------------------------------------------------------------------------------------
 
@@ -213,9 +253,10 @@ async function showCalendar() {
 
         function handleDocumentClick(event) {
             const calendarContainer = document.getElementById('calendarContainer');
+            const dropdownDiv = document.getElementById('dropdown-div');
 
-            // Check if the clicked element is outside the calendar
-            if (!calendarContainer.contains(event.target)) {
+            // Check if the clicked element is outside the calendar - Spørg pigerne!!!!!
+            if (!calendarContainer.contains(event.target) && !dropdownDiv.contains(event.target)) {
                 // Remove the calendar elements
                 removeCalendarElements();
 
@@ -265,28 +306,6 @@ function handleClickDay() {
             document.getElementById('choose-date-btn').innerText = selectedDate;
         }
     });
-}
-
-
-//WHEN TIMESTAMP CLICKED--------------------------------------------------------------------------------------------
-
-function handleClickTime() {
-    const timeDropdown = document.getElementById('timeDropdown');
-
-
-    if (timeDropdown) {
-        timeDropdown.addEventListener('click', function (event) {
-            if (event.target.tagName === 'A') {
-                const selectedTime = event.target.textContent.trim();
-                document.getElementById('selectedTime').value = selectedTime;
-                document.getElementById('select-time-btn').innerText = selectedTime;
-
-
-                // Toggle the "show" class to control visibility
-                timeDropdown.classList.toggle('show');
-            }
-        });
-    }
 }
 
 
@@ -381,8 +400,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     if (captureDeviceData) {*/
         // Include other properties from captureDeviceData if needed
-        populateDropdown();
-        handleClickTime();
+        //populateDropdown();
+
         postAppointmentToDatabase();
     /*} else {
         console.error('CaptureDevice data not found');

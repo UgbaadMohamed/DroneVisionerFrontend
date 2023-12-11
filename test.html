@@ -68,7 +68,7 @@
                     <label>Tidspunkt:</label>
                     <div class="input-section">
 
-                      <div class="dropdown">
+                      <div id ="dropdown-div" class="dropdown">
 
                         <button type="button" onclick="showTimeDropdown()"  id="select-time-btn">
                           Vælg tidspunkt
@@ -97,77 +97,87 @@
                       <input type="hidden" id="selectedTime" name="selectedTime">
                       <input type="hidden" id="captureDeviceId" name="captureDeviceId">
 
-                      <button class="submit1" type="submit"  style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Videre</button>
+
                     </div>
-                </form>
+
+
+
 
                   </div>
 
+
+
               </div>
+
             </div>
+            <div class="col-lg-6 d-flex align-items-center centered-container gradient-custom-2">
 
-            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-           <!--   <p1 style="margin-top: -450px; margin-left: 40%;">Vælg en prispakke</p1> !-->
 
-              <p id="price"></p>
-              <!-- Primary card -->
+
+<div class="card1">
               <div class="card bg-light mb-3" style="max-width: 18rem;">
                 <div class="card-header">Pakke 1</div>
                 <div class="card-body">
                   <h5 class="card-title">1 time</h5>
                   <p class="card-text">Få op til 20 sekunders professionelt indhold ved booking.</p>
                 </div>
-                <p1 style="margin-right: 40px !important;"> Pris 5000kr</p1>
+                <p> Pris 5000kr</p>
                 <div class="button-box">
                   <input type="radio" name="prispakke" onclick="showPrice('prispakke1', 5000)" class="btn btn-primary">
                 </div>
-
               </div>
+</div>
 
-              <!-- Secondary card -->
+<div class="card2">
               <div class="card bg-light mb-3" style="max-width: 18rem;">
                 <div class="card-header">Pakke 2</div>
                 <div class="card-body">
                   <h5 class="card-title">3 timer</h5>
                   <p class="card-text">Få op til 40 sekunders professionelt indhold ved booking.</p>
                 </div>
+
+                  <p> Pris 6500kr</p>
                 <div class="button-box">
-                  <p1> Pris 6500kr</p1>
                   <input type="radio" name="prispakke" onclick="showPrice('prispakke2', 6500)" class="btn btn-primary">
                 </div>
               </div>
+</div>
 
-              <!-- Success card -->
+<div class="card3">
               <div class="card bg-light mb-3" style="max-width: 18rem;">
                 <div class="card-header">Pakke 3</div>
                 <div class="card-body">
                   <h5 class="card-title">5 timer</h5>
                   <p class="card-text"> Få op til 1 sekunders professionelt indhold ved booking.</p>
                 </div>
-                <p1> Pris 12.500kr</p1>
+                <p> Pris 12.500kr</p>
                 <div class="button-box">
                   <input type="radio" name="prispakke" onclick="showPrice('prispakke3', 12500)" class="btn btn-primary">
                 </div>
               </div>
-
-
+</div>
               <div id="pricePopup">
-                <button> </button>
                 <p id="priceValue"></p>
-
               </div>
+
               <div class="text-white px-3 py-4 p-md-5 mx-md-4"></div>
 
             </div>
 
           </div>
 
+
         </div>
+        <button class="submit1" type="submit">Videre</button>
+        </form>
       </div>
+
     </div>
+
   </div>
 
 </section>
+
 
 </body>
 <div id="footer-placeholder"></div>
