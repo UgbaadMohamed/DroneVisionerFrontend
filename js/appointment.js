@@ -86,7 +86,7 @@ async function showCalendar() {
 
     if (elementsBelowCalendarContainer) {
         elementsBelowCalendarContainer.style.marginTop = !isCalendarVisible ? '550px' : '0';
-    }
+        }
 
     // Check if the calendar is already visible
     if (isCalendarVisible) {
@@ -96,14 +96,6 @@ async function showCalendar() {
         // Create the calendar container dynamically
         calendarContainer = document.getElementById('calendarContainer');
 
-// Calculate the position of the button???????????
-        const chooseDateBtn = document.getElementById('choose-date-btn');
-        const buttonPosition = chooseDateBtn.getBoundingClientRect();
-
-        // Set the position of the calendar container??????
-        calendarContainer.style.position = 'absolute';
-        calendarContainer.style.left = `${buttonPosition.left}px`;
-        calendarContainer.style.top = `${buttonPosition.bottom}px`;
 
         const currentDate = document.createElement('p');
         currentDate.classList.add('current-date');
@@ -124,12 +116,6 @@ async function showCalendar() {
         nextIcon.classList.add('material-symbols-rounded');
         nextIcon.textContent = 'chevron_right';
         prevNextIconsContainer.appendChild(nextIcon);
-
-        const confirmDate = document.createElement('button');
-        confirmDate.id = 'confirm-date-btn';
-        confirmDate.textContent = 'Bekræft dato';
-        confirmDate.addEventListener('click', removeCalendarElements)
-        prevNextIconsContainer.appendChild(confirmDate);
 
         const calendarDiv = document.createElement('div');
         calendarDiv.classList.add('calendar');
@@ -217,10 +203,33 @@ async function showCalendar() {
             });
         })
 
-        handleClickDay();
+        handleClickDay(); //?
 
         // Update the visibility state
         isCalendarVisible = true;
+
+        // Add a click event listener to the document
+        document.addEventListener('click', handleDocumentClick);
+
+        function handleDocumentClick(event) {
+            const calendarContainer = document.getElementById('calendarContainer');
+
+            // Check if the clicked element is outside the calendar
+            if (!calendarContainer.contains(event.target)) {
+                // Remove the calendar elements
+                removeCalendarElements();
+
+                // Reset styles of elementsBelowCalendarContainer
+                if (elementsBelowCalendarContainer) {
+                    elementsBelowCalendarContainer.style.marginTop = '0';
+                }
+
+                // Remove the click event listener
+                document.removeEventListener('click', handleDocumentClick);
+
+                isCalendarVisible = false;
+            }
+        }
     }
 }
 
@@ -231,8 +240,14 @@ function handleClickDay() {
     var daysTag = document.querySelector('.days');
 
     daysTag.addEventListener('click', function (event) {
-        if (event.target.tagName === 'LI') {
-            clickedDay = event.target;
+        if (event.target.tagName === 'LI'|| event.target.closest('li')) {
+            var clickedListItem = event.target.closest('li');
+
+            if (clickedListItem) {
+                clickedDay = clickedListItem;
+            }
+
+            console.log(clickedDay)
 
             daysTag.querySelectorAll('li').forEach(function (day) {
                 day.classList.remove('chosen');
@@ -243,6 +258,8 @@ function handleClickDay() {
             // Set the selected date in the hidden input field
             var selectedDate =
                 `${currYear}-${(currMonth + 1).toString().padStart(2, '0')}-${clickedDay.innerText.padStart(2, '0')}`;
+
+            console.log(selectedDate)
 
             document.getElementById('selectedDate').value = selectedDate;
             document.getElementById('choose-date-btn').innerText = selectedDate;

@@ -19,6 +19,7 @@
   <script src="/js/appointment.js"></script>
   <script src="/js/location.js"></script>
   <script src="/js/payment.js"></script>
+  <script src="/js/footer.js"></script>
   <link rel="stylesheet" href="../appointment.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -29,8 +30,11 @@
   <div id="header-placeholder"></div>
 </header>
 
+
 <section class="h-100 gradient-form" style="background-color: #eee;">
+
   <div class="container py-5 h-100">
+    <h1 class="heading">BOOKING</h1>
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-xl-10">
         <div class="card rounded-3 text-black">
@@ -66,9 +70,9 @@
 
                       <div class="dropdown">
 
-                        <button onclick="showTimeDropdown()"  id="select-time-btn">
+                        <button type="button" onclick="showTimeDropdown()"  id="select-time-btn">
                           Vælg tidspunkt
-                          <span class="material-symbols-rounded"></span>
+                          <span class="material-symbols-rounded">arrow_drop_down</span>
                         </button>
 
                         <div id="timeDropdown" class="dropdown-content"></div>
@@ -101,11 +105,11 @@
 
               </div>
             </div>
+
             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
            <!--   <p1 style="margin-top: -450px; margin-left: 40%;">Vælg en prispakke</p1> !-->
 
               <p id="price"></p>
-
               <!-- Primary card -->
               <div class="card bg-light mb-3" style="max-width: 18rem;">
                 <div class="card-header">Pakke 1</div>
@@ -146,20 +150,25 @@
                 </div>
               </div>
 
+
               <div id="pricePopup">
                 <button> </button>
                 <p id="priceValue"></p>
 
               </div>
               <div class="text-white px-3 py-4 p-md-5 mx-md-4"></div>
+
             </div>
 
           </div>
+
         </div>
       </div>
     </div>
   </div>
+
 </section>
 
 </body>
+<div id="footer-placeholder"></div>
 </html>
