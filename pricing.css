@@ -1,15 +1,13 @@
-/* Add this to your pricing.css file or style section */
-
 body {
-    padding-top: 20px; /* Adjust this value to move everything higher */
-    padding-bottom: 20px; /* Add equal space to the bottom */
+    padding-top: 20px; /* Juster denne værdi for at hæve alt */
+    padding-bottom: 20px; /* Tilføj tilsvarende plads forneden */
 }
 
 .pricing-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; /* Adjusted to column layout */
+    flex-direction: column; /* Justeret til kolonnelayout */
     margin-bottom: 400px;
 }
 
@@ -28,24 +26,6 @@ body {
     width: 80%;
 }
 
-@keyframes mainCardAnimation {
-    0%, 100% {
-        transform: translateY(50%);
-    }
-    50% {
-        transform: translateY(0);
-    }
-}
-
-@keyframes secondaryCardsAnimation {
-    0%, 100% {
-        transform: translateY(-50%);
-    }
-    50% {
-        transform: translateY(0);
-    }
-}
-
 .pricing-card {
     box-sizing: border-box;
     flex: 0 1 30%;
@@ -56,8 +36,6 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
-    animation: secondaryCardsAnimation 15s infinite;
-    animation-delay: 2s; /* Initial delay */
 }
 
 .main-card {
@@ -66,98 +44,19 @@ body {
     flex: 0 1 30%;
     padding: 120px 60px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    animation: mainCardAnimation 15s infinite;
-    animation-delay: 2s; /* Initial delay */
-}/* Add this to your pricing.css file or style section */
-
-body {
-    padding-top: 20px; /* Adjust this value to move everything higher */
-    padding-bottom: 20px; /* Add equal space to the bottom */
-}
-
-.pricing-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; /* Adjusted to column layout */
-    margin-bottom: 400px;
-}
-
-.pricing-header {
-    margin-bottom: 20%;
-}
-
-.pricing-text {
-    text-align: center;
-    margin-top: -20%;
-}
-
-.pricing-cards {
-    display: flex;
-    justify-content: space-around;
-    width: 80%;
-}
-
-@keyframes mainCardAnimation {
-    0%, 100% {
-        transform: translateY(50%);
-    }
-    50% {
-        transform: translateY(0);
-    }
-}
-
-@keyframes secondaryCardsAnimation {
-    0%, 100% {
-        transform: translateY(-50%);
-    }
-    50% {
-        transform: translateY(0);
-    }
-}
-
-.pricing-card {
-    box-sizing: border-box;
-    flex: 0 1 30%;
-    margin: 0;
-    text-align: center;
-    padding: 60px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    animation: secondaryCardsAnimation 15s infinite;
-    animation-delay: 2s; /* Initial delay */
-}
-
-.main-card {
-    background-color: #0c4b00;
-    color: #fff;
-    flex: 0 1 30%;
-    padding: 120px 60px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    animation: mainCardAnimation 15s infinite;
-    animation-delay: 2s; /* Initial delay */
-}
-
-.pricing-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
 }
 
 .pricing-card h2,
 .pricing-card p {
-    transition: color 0.3s; /* Add transition for text color change on hover */
+    transition: color 0.3s; /* Tilføj overgang for farveskift ved hover */
 }
 
-.pricing-card:hover h2,
-.pricing-card:hover p {
-    color: #3498db; /* Change text color on hover */
+.pricing-card button.btn-link {
+    text-decoration: none;
 }
 
-.pricing-card.main-card:hover {
-    transform: scale(1.05); /* Scale the card on hover */
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); /* Increase the shadow on hover */
+.pricing-card button.btn-link:hover {
+    text-decoration: none;
 }
 
 .label {
@@ -176,39 +75,20 @@ body {
     color: #fff;
 }
 
-
-.pricing-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-}
-
-.pricing-card h2,
-.pricing-card p {
-    transition: color 0.3s; /* Add transition for text color change on hover */
-}
-
-.pricing-card:hover h2,
-.pricing-card:hover p {
-    color: #3498db; /* Change text color on hover */
-}
-
-.pricing-card.main-card:hover {
-    transform: scale(1.05); /* Scale the card on hover */
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); /* Increase the shadow on hover */
-}
-
-.label {
+#fixed-background {
+    position: fixed;
+    top: 70%;
+    margin-right: 150px;
+    margin-left: 50px;
+    width: 90%;
+    height: 30%;
     background-color: #6c757d;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    z-index: -1;
 }
 
-.btn-secondary,
-.btn-primary {
-    background-color: #6c757d;
-    color: #fff;
+#content-container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    position: relative;
+    z-index: 1;
 }

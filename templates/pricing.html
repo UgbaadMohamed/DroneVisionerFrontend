@@ -1,65 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
     <script src="/js/header.js"></script>
     <script src="/js/footer.js"></script>
     <link rel="stylesheet" href="../pricing.css">
 
-    <title>Your Website</title>
+    <title>Din Hjemmeside</title>
 </head>
 
 <body>
 <div style="margin-bottom: 3rem" id="header-placeholder"></div>
+<div id="fixed-background"></div>
 
-<!-- Pricing Section -->
+<div class="content-container">
+
+<!-- Prisafsnit -->
 <div class="pricing-container">
-    <!-- Pricing Header -->
+    <!-- Prisoverskrift -->
     <br>
     <div class="pricing-header">
-        <h1 id="title" style="color: #829d65; font-size: 2.5rem;">Priser</h1>
+        <h1 id="title" style="color: #829d65; font-size: 2.5rem;">Pakker</h1>
     </div>
-<br>
-    <!-- Pricing Text -->
+    <br>
+    <!-- Pristekst -->
     <div class="pricing-text">
-        <p>Herunder er vores pris klasser, og du får de</p>
+        <p>Opdag vores pakker og få de</p>
         <p>bedste priser på markedet med vores service.</p>
     </div>
-<br>
-    <!-- Pricing Cards -->
+    <br>
+    <!-- Priskort -->
     <div class="pricing-cards">
-        <!-- Secondary Pricing Cards -->
+        <!-- Video Pakke -->
         <div class="pricing-card">
-            <h2>Standard Plan</h2>
-            <p>Description of the standard plan.</p>
-            <p>$9.99/month</p>
-            <button class="btn btn-secondary">Get Started</button>
+            <h2>Video Pakke</h2>
+            <br> <br>
+            <p>Professionelle videoer skabt med dedikeret service, kreativitet og kvalitet.</p>
+            <p>Varighed: 2 timer</p>
+            <!-- Ændret fra btn-secondary til btn-link for at ligne almindelig tekst -->
+            <button class="btn btn-link" disabled>Kom i gang</button>
         </div>
 
-        <!-- Main Pricing Card -->
+        <!-- Drone Pakke -->
         <div class="pricing-card main-card">
+
             <span class="label">Populær</span>
-            <h2>Main Plan</h2>
-            <p>Description of the main plan.</p>
-            <p>$19.99/month</p>
-            <button class="btn btn-primary">Get Started</button>
+            <h2 style="font-size: 2.3rem;">Drone Pakke</h2>
+            <br>
+            <p>Spektakulær droneproduktion, løft dine projekter til nye højder.</p>
+            <br>
+            <p>Varighed: 90 minutter</p>
+            <!-- Ændret fra btn-primary til btn-link for at ligne almindelig tekst -->
+            <button class="btn btn-link" disabled>Kom i gang</button>
         </div>
 
-        <!-- Secondary Pricing Cards -->
+        <!-- Foto Pakke -->
         <div class="pricing-card">
-            <h2>Basic Plan</h2>
-            <p>Description of the basic plan.</p>
-            <p>$5.99/month</p>
-            <button class="btn btn-secondary">Get Started</button>
+            <h2>Foto Pakke</h2>
+            <br> <br>
+            <p>Fantastisk fotosession, skab varige minder med vores omfattende tjenester.</p>
+            <p>Varighed: 3 timer</p>
+            <!-- Ændret fra btn-secondary til btn-link for at ligne almindelig tekst -->
+            <button class="btn btn-link" disabled>Kom i gang</button>
+        </div>
         </div>
     </div>
-
-
 </div>
-<br><br><br><br><br><br><br>
+<br><br>
 <div id="footer-placeholder"></div>
+</body>
+
+</html>

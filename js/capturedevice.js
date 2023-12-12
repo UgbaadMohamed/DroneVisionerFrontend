@@ -1,11 +1,20 @@
-
-
 // Use fetch to get the header content and insert it into the placeholder
 
+
 async function submitForm() {
-    const brand = document.getElementById('brand').value;
+    console.log("should work now")
+
+    captureDeviceId = document.getElementById('captureDeviceId').value
+
+    window.location.href = `../test.html?captureDeviceId=${captureDeviceId}`;
+
+}
+
+
+   /* const brand = document.getElementById('brand').value;
     const version = document.getElementById('version').value;
     const visualMediaType = document.getElementById('visualMediaType').value;
+
 
     // Check if the visual media type already exists in the backend
     const existingVisualMediaTypeResponse = await fetch(`http://localhost:8085/visualMediaType?type_Name=${visualMediaType}`, {
@@ -16,8 +25,10 @@ async function submitForm() {
     });
     let visualMediaTypeID;
 
+
     if (existingVisualMediaTypeResponse.ok) {
         const existingVisualMediaTypeData = await existingVisualMediaTypeResponse.json();
+
 
         if (existingVisualMediaTypeData.length > 0) {
             // Use the existing visual media type ID based on the type
@@ -47,11 +58,14 @@ async function submitForm() {
                 }),
             });
 
+
             const newVisualMediaTypeData = await newVisualMediaTypeResponse.json();
             visualMediaTypeID = newVisualMediaTypeData.visualMediaType_ID;
         }
 
+
         console.log('Existing Visual Media Type Data:', existingVisualMediaTypeData);
+
 
         // Post CaptureDevice to the backend
         const captureDeviceResponse = await fetch('http://localhost:8085/captureDevice', {
@@ -66,29 +80,25 @@ async function submitForm() {
                     visualMediaType_ID: visualMediaTypeID,
                 },
             }),
-        });
+        });*/
 
 
-            const captureDeviceData = await captureDeviceResponse.json();
+        // const captureDeviceData = await captureDeviceResponse.json();
+        //
+        // const captureDeviceId = captureDeviceData.captureDevice_ID; // Use the correct property name
+        //
+        // console.log('Capture Device ID:', captureDeviceId);
 
-            const captureDeviceId = captureDeviceData.captureDevice_ID; // Use the correct property name
-
-            //console.log('Capture Device ID:', captureDeviceId);
 
 
-       window.location.href = `appointment.html?captureDeviceId=${captureDeviceId}`;
-
-    } else {
+   /* } else {
         console.error('Error fetching existing visual media type');
+    }*/
 
-    }
 
 
-    //plan a forsætte
-    //plan b fetch det og put det ind i html.
-    //routers(controller)
 
-}
+
 
 
 

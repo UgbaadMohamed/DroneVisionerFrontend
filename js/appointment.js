@@ -1,4 +1,7 @@
+const url = 'http://localhost:8085/appointment';
+
 //LOOP TIL TIME --------------------------------------------------------------------------------------------
+let isTimeDropdownVisible = false
 
 function generateTimeOptions() {
     var startTime = 10; // Starting hour
@@ -14,85 +17,117 @@ function generateTimeOptions() {
     return timeOptions;
 }
 
-//
-function populateDropdown() {
+function createDropdown() {
     var timeOptions = generateTimeOptions();
+    var dropdownContainer = document.getElementById("timeDropdown");
 
-    var dropdown = document.getElementById("timeDropdown");
+    // Clear existing options
+    dropdownContainer.innerHTML = "";
 
     timeOptions.forEach(function (time) {
         var option = document.createElement("a");
         option.textContent = time;
-        dropdown.appendChild(option);
+        option.addEventListener("click", function () {
+            handleClickTime();
+            console.log("Selected time:", time);
+            // Optionally, close the dropdown after selection
+            dropdownContainer.classList.remove('show'); //??
+        });
+        dropdownContainer.appendChild(option);
     });
 }
 
-//TIME DROPDOWN --------------------------------------------------------------------------------------------
-
 function showTimeDropdown() {
-    var dropdown = document.getElementById("timeDropdown");
-    dropdown.classList.toggle("show");
+    var dropdownContainer = document.getElementById("timeDropdown");
+
+    // Explicitly add the 'show' class to display the dropdown
+    dropdownContainer.classList.add("show");
+
+    // Generate options only when the dropdown is shown
+    createDropdown();
+
+    // Adjust the position of elements below the dropdown
+    var elementsToMove = document.querySelectorAll('.elements-to-move');
+    elementsToMove.forEach(function (element) {
+        element.style.marginTop = '30px'; // Adjust the margin to match the dropdown height
+    });
 }
 
-//Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
+//den klikker også når tid er valgt 2. gang
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function (event) {
+    var dropdownButton = document.getElementById("select-time-btn");
+    var dropdownContainer = document.getElementById("timeDropdown");
+
+
+    // Check if the click is outside of both the button and the dropdown content
+    if (
+        !event.target.matches('.combined-btn-time') &&
+        !event.target.closest('.dropdown') &&
+        !event.target.matches('.dropdown-content a')
+    ) {
+        // Hide the dropdown if it is shown
+        if (dropdownContainer && dropdownContainer.classList.contains("show")) {
+            dropdownContainer.classList.remove('show');
+
+            // Reset the position of elements below the dropdown
+            var elementsToMove = document.querySelectorAll('.elements-to-move');
+            elementsToMove.forEach(function (element) {
+                element.style.marginTop = '0';
+            });
         }
+    }
+};
+
+
+//WHEN TIMESTAMP CLICKED--------------------------------------------------------------------------------------------
+
+function handleClickTime() {
+    const timeDropdown = document.getElementById('timeDropdown');
+
+
+    if (timeDropdown) {
+        timeDropdown.addEventListener('click', function (event) {
+            if (event.target.tagName === 'A') {
+                const selectedTime = event.target.textContent.trim();
+                document.getElementById('selectedTime').value = selectedTime;
+                document.getElementById('select-time-btn').innerText = selectedTime;
+
+
+                // Toggle the "show" class to control visibility
+                timeDropdown.classList.toggle('show');
+            }
+        });
     }
 }
 
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-}
-
-//DOM CONTENT LOADED --------------------------------------------------------------------------------------------
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Retrieve the captureDeviceId from the URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const captureDeviceId = urlParams.get('captureDeviceId');
-    document.getElementById('captureDeviceId').value = captureDeviceId;
-
-    populateDropdown();
-    handleClickTime();
-    postAppointmentToDatabase();
-});
-
-
-
 //CALENDER --------------------------------------------------------------------------------------------
+
 
 var clickedDay;
 let isCalendarVisible = false; // Variable to track the visibility of the calendar
 let calendarContainer = document.getElementById('calendarContainer');
+
 
 // getting new date, current year and month
 let date = new Date(),
     currYear = date.getFullYear(),
     currMonth = date.getMonth();
 
+
 function removeCalendarElements(){
     calendarContainer.innerHTML = '';
     isCalendarVisible = false; // Reset the visibility state
 }
 
-function showCalendar() {
+
+async function showCalendar() {
 // Adjust elements below the calendar
     const elementsBelowCalendarContainer = document.getElementById('elementsBelowCalendarContainer');
 
     if (elementsBelowCalendarContainer) {
         elementsBelowCalendarContainer.style.marginTop = !isCalendarVisible ? '550px' : '0';
-    }
+        }
 
     // Check if the calendar is already visible
     if (isCalendarVisible) {
@@ -102,15 +137,6 @@ function showCalendar() {
         // Create the calendar container dynamically
         calendarContainer = document.getElementById('calendarContainer');
 
-        // Calculate the position of the calendar relative to the "Vælg dato" button
-        const dropdownButton = document.getElementById('choose-date-btn');
-        const dropdownRect = dropdownButton.getBoundingClientRect();
-        const calendarHeight = calendarContainer.offsetHeight;
-
-        // Set the position of the calendar to be below the "Vælg dato" button
-        calendarContainer.style.position = 'absolute';
-        calendarContainer.style.left = `${dropdownRect.left}px`;
-        calendarContainer.style.top = `${dropdownRect.bottom}px`;
 
         const currentDate = document.createElement('p');
         currentDate.classList.add('current-date');
@@ -131,12 +157,6 @@ function showCalendar() {
         nextIcon.classList.add('material-symbols-rounded');
         nextIcon.textContent = 'chevron_right';
         prevNextIconsContainer.appendChild(nextIcon);
-
-        const confirmDate = document.createElement('button');
-        confirmDate.id = 'confirm-date-btn';
-        confirmDate.textContent = 'Bekræft dato';
-        confirmDate.addEventListener('click', removeCalendarElements)
-        prevNextIconsContainer.appendChild(confirmDate);
 
         const calendarDiv = document.createElement('div');
         calendarDiv.classList.add('calendar');
@@ -159,11 +179,9 @@ function showCalendar() {
 
         const prevNextIcon = [prevIcon, nextIcon];
 
-
 // storing full name of all months in array
         const months = ["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli",
             "August", "September", "Oktober", "November", "December"];
-
 
         //Check if the days of the week have already been inserted
         const weeksTag = document.querySelector(".weeks");
@@ -173,30 +191,39 @@ function showCalendar() {
             weeksTag.innerHTML = daysOfWeek.map(day => `<li>${day}</li>`).join('');
         }
 
+        const response = await fetch(`${url}/booked-dates`);
+        const bookedDates = await response.json();
+
         const renderCalendar = () => {
-            let firstDayofMonth = new Date(currYear, currMonth, 0).getDay(), // getting first day of month /0 i stedet for 1
-                lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), // getting last date of month
-                lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay() - 1, // getting last day of month /tilføjede -1
-                lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
+            let firstDayofMonth = new Date(currYear, currMonth, 0).getDay(),
+                lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(),
+                lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay() - 1,
+                lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate();
             let liTag = "";
 
-            for (let i = firstDayofMonth; i > 0; i--) { // creating li of previous month last days
+            for (let i = firstDayofMonth; i > 0; i--) {
                 liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
             }
 
-            for (let i = 1; i <= lastDateofMonth; i++) { // creating li of all days of current month
-                // adding active class to li if the current day, month, and year matched
+            for (let i = 1; i <= lastDateofMonth; i++) {
+                const isBooked = bookedDates.includes(
+                    new Date(currYear, currMonth, i).toISOString().split('T')[0]);
+
                 let isToday = i === date.getDate() && currMonth === new Date().getMonth()
-                && currYear === new Date().getFullYear() ? "active" : "";
-                liTag += `<li class="${isToday}">${i}</li>`;
+                && currYear === new Date().getFullYear() ? "chosen" : "";
+                let bookedClass = isBooked ? "booked" : "";
+                liTag += `<li class="${isToday} ${bookedClass}"><span class="date-number">${i}</span></li>`;
             }
 
-            for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
-                liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
+
+            for (let i = lastDayofMonth; i < 6; i++) {
+                liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
             }
-            currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
+
+            currentDate.innerText = `${months[currMonth]} ${currYear}`;
             daysTag.innerHTML = liTag;
-        }
+        };
+
 
         renderCalendar();
 
@@ -217,10 +244,34 @@ function showCalendar() {
             });
         })
 
-        handleClickDay();
+        handleClickDay(); //?
 
         // Update the visibility state
         isCalendarVisible = true;
+
+        // Add a click event listener to the document
+        document.addEventListener('click', handleDocumentClick);
+
+        function handleDocumentClick(event) {
+            const calendarContainer = document.getElementById('calendarContainer');
+            const dropdownDiv = document.getElementById('dropdown-div');
+
+            // Check if the clicked element is outside the calendar - Spørg pigerne!!!!!
+            if (!calendarContainer.contains(event.target) && !dropdownDiv.contains(event.target)) {
+                // Remove the calendar elements
+                removeCalendarElements();
+
+                // Reset styles of elementsBelowCalendarContainer
+                if (elementsBelowCalendarContainer) {
+                    elementsBelowCalendarContainer.style.marginTop = '0';
+                }
+
+                // Remove the click event listener
+                document.removeEventListener('click', handleDocumentClick);
+
+                isCalendarVisible = false;
+            }
+        }
     }
 }
 
@@ -231,18 +282,26 @@ function handleClickDay() {
     var daysTag = document.querySelector('.days');
 
     daysTag.addEventListener('click', function (event) {
-        if (event.target.tagName === 'LI') {
-            clickedDay = event.target;
+        if (event.target.tagName === 'LI'|| event.target.closest('li')) {
+            var clickedListItem = event.target.closest('li');
+
+            if (clickedListItem) {
+                clickedDay = clickedListItem;
+            }
+
+            console.log(clickedDay)
 
             daysTag.querySelectorAll('li').forEach(function (day) {
-                day.classList.remove('active');
+                day.classList.remove('chosen');
             });
 
-            clickedDay.classList.add('active');
+            clickedDay.classList.add('chosen');
 
             // Set the selected date in the hidden input field
             var selectedDate =
                 `${currYear}-${(currMonth + 1).toString().padStart(2, '0')}-${clickedDay.innerText.padStart(2, '0')}`;
+
+            console.log(selectedDate)
 
             document.getElementById('selectedDate').value = selectedDate;
             document.getElementById('choose-date-btn').innerText = selectedDate;
@@ -251,54 +310,57 @@ function handleClickDay() {
 }
 
 
-//TODO:TIME!!!!!!!!!!!!!! //kalde dom content en gang og så kalde de forskelle funktioner
-//WHEN TIMESTAMP CLICKED--------------------------------------------------------------------------------------------
+//GET CAPTURE DEVICE ID--------------------------------------------------------------------------------------------
 
-function handleClickTime() {
-    const timeDropdown = document.getElementById('timeDropdown');
+/*async function getCaptureDeviceById(captureDeviceId) {
+    const response = await fetch(`http://localhost:8085/captureDevice/${captureDeviceId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
 
-    if (timeDropdown) {
-        timeDropdown.addEventListener('click', function (event) {
-            if (event.target.tagName === 'A') {
-                const selectedTime = event.target.textContent.trim();
-                document.getElementById('selectedTime').value = selectedTime;
-                document.getElementById('select-time-btn').innerText = selectedTime;
-
-                // Toggle the "show" class to control visibility
-                timeDropdown.classList.toggle('show');
-            }
-        });
+    if (response.ok) {
+        const captureDeviceData = await response.json();
+        return captureDeviceData;
+    } else {
+        console.error('Error fetching CaptureDevice');
+        return null;
     }
-}
-
+}*/
 
 
 //POST APPOINTMENT TO DATABASE-----------------------------------------------------------------------------------------
 
-function postAppointmentToDatabase() {
+async function postAppointmentToDatabase() {
     const form = document.getElementById('appointmentForm');
-
 
     if (form) {
         form.onsubmit = async function (event) {
             event.preventDefault(); // Prevent default form submission
 
+            // Validate each field before proceeding
+            const location = document.getElementById("location").value;
+            const description = document.getElementById("description").value;
+            const selectedDate = document.getElementById("selectedDate").value;
+            const selectedTime = document.getElementById("selectedTime").value;
+            //const captureDeviceId = document.getElementById("captureDeviceId").value;
+
+            // Fetch the complete CaptureDevice object
+            //const captureDevice = await getCaptureDeviceById(captureDeviceId);
 
             const formData = {
-                location: document.getElementById("location").value,
-                description: document.getElementById("description").value,
-                date: document.getElementById("selectedDate").value, //date
-                time: document.getElementById("selectedTime").value,
-                captureDevice: {
-                    capture_deviceid_fk: document.getElementById("captureDeviceId").value
-                }
-            }
+                location: location,
+                description: description,
+                date: selectedDate,
+                time: selectedTime
+                //captureDevice: captureDevice,
+            };
 
             console.log("Form Data:", formData);
 
-
             try {
-                const response = await fetch('http://localhost:8085/appointment', {
+                const response = await fetch(url, {
                     method: 'POST',
                     body: JSON.stringify(formData),
                     headers: {
@@ -306,15 +368,14 @@ function postAppointmentToDatabase() {
                     },
                 });
 
-
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
 
-
                 const data = await response.json();
                 console.log('Success:', data);
 
+                window.location.href = `/templates/customer.html?appointmentId=${data.appointmentId}`;
 
                 // Uncomment the line below if you want to redirect after successful submission
                 // window.location.href = "/header.html";
@@ -325,17 +386,48 @@ function postAppointmentToDatabase() {
     } else {
         console.error('Form with ID "appointmentForm" not found');
     }
-
-
 }
 
 
-    function submitForm() {
-    window.location.href = '../templates/customer.html';
+//DOM CONTENT LOADED --------------------------------------------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', async function () {
+    // Retrieve the captureDeviceId from the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const captureDeviceId = urlParams.get('captureDeviceId');
+    document.getElementById('captureDeviceId').value = captureDeviceId;
+
+    /*const captureDeviceData = await getCaptureDeviceById(captureDeviceId);
+
+    if (captureDeviceData) {*/
+        // Include other properties from captureDeviceData if needed
+        //populateDropdown();
+
+        postAppointmentToDatabase();
+    /*} else {
+        console.error('CaptureDevice data not found');
+    }*/
+});
+
+//----
+async function getBookedDates() {
+    try {
+        const response = await fetch(`${url}/booked-dates`);
+
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+
+        const bookedDates = await response.json();
+
+        // Handle the bookedDates as needed
+        console.log('Booked Dates:', bookedDates);
+
+        return bookedDates;
+    } catch (error) {
+        console.error('Error fetching booked dates:', error.message);
+        // Handle the error as needed
     }
-
-
-
-
+}
 
 

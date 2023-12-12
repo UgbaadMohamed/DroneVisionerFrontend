@@ -9,6 +9,7 @@ async function getCustomerData() {
 
         const rawData = await response.json();
         const customerData = processCustomerData(rawData);
+
         createCharts(customerData);
     } catch (error) {
         console.error('Error fetching data:', error);
