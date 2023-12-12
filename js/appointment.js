@@ -1,6 +1,7 @@
 const url = 'http://localhost:8085/appointment';
 
 //LOOP TIL TIME --------------------------------------------------------------------------------------------
+let isTimeDropdownVisible = false
 
 function generateTimeOptions() {
     var startTime = 10; // Starting hour

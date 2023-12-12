@@ -31,7 +31,7 @@
 </header>
 
 
-<section class="h-100 gradient-form" style="background-color: #eee;">
+<section class="h-100 gradient-form" style="background-color: #eee; margin-bottom: -24px;">
 
   <div class="container py-5 h-100">
     <h1 class="heading">BOOKING</h1>
@@ -85,6 +85,7 @@
                       <div id="suggestionsContainer"></div>
                     </div>
 
+
                     <div id="elementsBelowAddressContainer">
                       <label for="description">Begivenhedsdetaljer:</label>
                       <div class="input-section">
@@ -93,25 +94,22 @@
                         ></textarea>
                       </div>
 
+                      <p class="obs">*Bemærk: Hvis du ønsker at inkludere droneflyvning i din booking,
+                        bedes du angive det i "begivenhedsdetaljer". Vi vil gerne koordinere dette for dig.</p>
+
                       <input type="hidden" id="selectedDate" name="selectedDate">
                       <input type="hidden" id="selectedTime" name="selectedTime">
                       <input type="hidden" id="captureDeviceId" name="captureDeviceId">
 
-
                     </div>
 
-
-
-
                   </div>
-
-
 
               </div>
 
             </div>
-            <div class="col-lg-6 d-flex align-items-center centered-container gradient-custom-2">
 
+            <div class="col-lg-6 d-flex align-items-center centered-container gradient-custom-2">
 
 
 <div class="card1">
@@ -119,9 +117,9 @@
                 <div class="card-header">Pakke 1</div>
                 <div class="card-body">
                   <h5 class="card-title">1 time</h5>
-                  <p class="card-text">Få op til 20 sekunders professionelt indhold ved booking.</p>
+                  <p class="card-text">Professionelle billeder for den valgte tidsperiode.</p>
                 </div>
-                <p> Pris 5000kr</p>
+                <p>5.000 kr.</p>
                 <div class="button-box">
                   <input type="radio" name="prispakke" onclick="showPrice('prispakke1', 5000)" class="btn btn-primary">
                 </div>
@@ -133,10 +131,10 @@
                 <div class="card-header">Pakke 2</div>
                 <div class="card-body">
                   <h5 class="card-title">3 timer</h5>
-                  <p class="card-text">Få op til 40 sekunders professionelt indhold ved booking.</p>
+                  <p class="card-text">Professionelle billeder for den valgte tidsperiode.</p>
                 </div>
 
-                  <p> Pris 6500kr</p>
+                  <p>6.500 kr.</p>
                 <div class="button-box">
                   <input type="radio" name="prispakke" onclick="showPrice('prispakke2', 6500)" class="btn btn-primary">
                 </div>
@@ -148,14 +146,15 @@
                 <div class="card-header">Pakke 3</div>
                 <div class="card-body">
                   <h5 class="card-title">5 timer</h5>
-                  <p class="card-text"> Få op til 1 sekunders professionelt indhold ved booking.</p>
+                  <p class="card-text">Professionelle billeder for den valgte tidsperiode.</p>
                 </div>
-                <p> Pris 12.500kr</p>
+                <p>12.500 kr.</p>
                 <div class="button-box">
                   <input type="radio" name="prispakke" onclick="showPrice('prispakke3', 12500)" class="btn btn-primary">
                 </div>
               </div>
 </div>
+              <button class="submit1" type="submit">Videre</button>
               <div id="pricePopup">
                 <p id="priceValue"></p>
               </div>
@@ -168,8 +167,8 @@
 
 
         </div>
-        <button class="submit1" type="submit">Videre</button>
-        </form>
+
+
       </div>
 
     </div>
@@ -178,7 +177,7 @@
 
 </section>
 
-
+</form>
 </body>
 <div id="footer-placeholder"></div>
 </html>
